@@ -1,0 +1,4 @@
+rootProject.name = 'file-sharing-app'
+
+// Include subprojects
+include 'client', 'server'

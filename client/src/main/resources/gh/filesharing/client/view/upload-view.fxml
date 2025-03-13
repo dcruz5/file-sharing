@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gh.filesharing.client.controllers.UploadController">
+   <center>
+      <VBox alignment="CENTER" maxWidth="600.0" spacing="15.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+         <children>
+            <Label text="Subir Nuevo Archivo" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Separator prefWidth="200.0" />
+
+            <!-- Drag and Drop Area -->
+            <VBox fx:id="dropArea" alignment="CENTER" minHeight="120.0" spacing="10.0" style="-fx-border-style: dashed; -fx-border-width: 2; -fx-border-color: #cccccc; -fx-background-color: #f8f8f8;">
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+               <children>
+                  <Label text="Arrastre y suelte archivos aquí">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="o">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="browseButton" mnemonicParsing="false" onAction="#handleBrowseAction" text="Seleccionar Archivo" />
+               </children>
+            </VBox>
+
+            <HBox fx:id="selectedFileBox" alignment="CENTER_LEFT" spacing="10.0" >
+               <children>
+                  <Label text="Archivo seleccionado:" />
+                  <TextField fx:id="filePathField" editable="false" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="clearFileButton" mnemonicParsing="false"  text="×" />
+               </children>
+            </HBox>
+
+            <GridPane hgap="10.0" vgap="15.0">
+
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Código de acceso:" GridPane.rowIndex="0" />
+                  <TextField fx:id="accessCodeField" promptText="Código para compartir el archivo" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+               </children>
+            </GridPane>
+            <HBox alignment="CENTER_RIGHT" spacing="10.0">
+               <children>
+<!--                  <Label fx:id="fileInfoLabel" HBox.hgrow="ALWAYS" />-->
+                  <Button fx:id="cancelButton" mnemonicParsing="false"  text="Cancelar" />
+                   <Button fx:id="testConnectionButton" mnemonicParsing="false"  text="Test Connection" onAction="#handleconecion"/>
+                  <Button fx:id="uploadButton" defaultButton="true" disable="true" mnemonicParsing="false"  text="Subir Archivo" />
+               </children>
+            </HBox>
+            <ProgressBar fx:id="uploadProgressBar" prefWidth="200.0" progress="0.0" visible="false" />
+            <Label fx:id="statusLabel" textAlignment="CENTER" textFill="#2c85c9" wrapText="true" />
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

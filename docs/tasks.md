@@ -6,18 +6,18 @@
 ### Subtasques del Backend  
 #### Configuració del projecte i entorn
 - [ ] Configurar el repositori Git i estructura del projecte.
-  - Preparar el sistema de compilació i execució (Gradle).
-  - Configurar un servidor TLS amb `SSLServerSocket`.
+- [x] Preparar el sistema de compilació i execució (Gradle).
+- [ ] Configurar un servidor TLS amb `SSLServerSocket`.
 
 #### Implementació de la comunicació segura (TLS)
-- [ ] Creació de certificats (`keystore` i `truststore`).
+- [x] Creació de certificats (`keystore` i `truststore`).
 - [ ] Implementació de `SSLSocket` i `SSLServerSocket` per connexions xifrades.
 - [ ] Proves de connexió segura amb un client bàsic.
 
 #### Gestió d’usuaris i autenticació
 - [ ] Registre i inici de sessió amb xifrat de contrasenyes (`SHA-256 + sal`).
 - [ ] Validació de permisos per accedir a fitxers.
-- [ ] Integració amb una base de dades MySQL per gestionar usuaris.
+- [x] Integració amb una base de dades MySQL per gestionar usuaris.
 
 #### Gestió de fitxers (pujada i descàrrega)
 - [ ] Implementació de la recepció de fitxers xifrats amb `AES-256`.

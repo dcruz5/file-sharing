@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gh.filesharing.client.controllers.LoginRegisterController">
+<BorderPane stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gh.filesharing.client.controllers.AuthController">
     <center>
         <TabPane fx:id="loginTabPane" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
             <tabs>

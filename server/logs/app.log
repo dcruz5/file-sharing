@@ -204,3 +204,75 @@ java.lang.UnsupportedOperationException: The application must supply JDBC connec
 2025-03-13 17:23:39.273 [Test worker] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@1eb6037d] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
 2025-03-13 17:23:40.706 [Test worker] INFO  gh.filesharing.controllers.FileController - User Alice downloaded a file
 2025-03-13 17:23:40.708 [Test worker] INFO  gh.filesharing.controllers.FileController - User Optional[Alice] shared a file
+2025-03-18 16:25:28.384 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: file_sharing]
+2025-03-18 16:25:28.415 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.9.Final
+2025-03-18 16:25:28.435 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-03-18 16:25:28.517 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-03-18 16:25:29.724 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-03-18 16:25:29.727 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18 16:25:29.821 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://cicles.ies-eugeni.cat:3306/dcruz_db]
+	Database driver: com.mysql.cj.jdbc.Driver
+	Database version: 5.5.5
+	Autocommit mode: false
+	Isolation level: undefined/unknown
+	Minimum pool size: 1
+	Maximum pool size: 20
+2025-03-18 16:25:30.488 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18 16:25:30.648 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@30fbc23] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-03-18 16:25:32.482 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2025-03-18 16:25:32.483 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 17.0.14+7-Ubuntu-122.04.1
+2025-03-18 16:25:32.517 [main] INFO  org.eclipse.jetty.server.session.DefaultSessionIdManager - Session workerName=node0
+2025-03-18 16:25:32.523 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@35ceec81{/,null,AVAILABLE}
+2025-03-18 16:25:32.529 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@55c03e4{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8080}
+2025-03-18 16:25:32.534 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@1f60824e{SSL, (ssl, alpn, h2, http/1.1)}{0.0.0.0:8443}
+2025-03-18 16:25:32.536 [main] INFO  org.eclipse.jetty.server.Server - Started Server@41059616{STARTING}[11.0.24,sto=0] @4853ms
+2025-03-18 16:25:32.536 [main] INFO  io.javalin.Javalin - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-03-18 16:25:32.537 [main] INFO  io.javalin.Javalin - Javalin started in 166ms \o/
+2025-03-18 16:25:32.539 [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+2025-03-18 16:25:32.539 [main] INFO  io.javalin.Javalin - Listening on https://localhost:8443/
+2025-03-18 16:25:32.548 [main] INFO  io.javalin.Javalin - You are running Javalin 6.4.0 (released December 17, 2024).
+2025-03-18 17:01:04.942 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: file_sharing]
+2025-03-18 17:01:04.974 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.9.Final
+2025-03-18 17:01:04.997 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-03-18 17:01:05.084 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-03-18 17:01:05.694 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-03-18 17:01:05.699 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-18 17:01:05.778 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://cicles.ies-eugeni.cat:3306/dcruz_db]
+	Database driver: com.mysql.cj.jdbc.Driver
+	Database version: 5.5.5
+	Autocommit mode: false
+	Isolation level: undefined/unknown
+	Minimum pool size: 1
+	Maximum pool size: 20
+2025-03-18 17:01:06.534 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-18 17:01:06.603 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@30fbc23] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-03-18 17:01:08.149 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2025-03-18 17:01:08.151 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 17.0.14+7-Ubuntu-122.04.1
+2025-03-18 17:01:08.184 [main] INFO  org.eclipse.jetty.server.session.DefaultSessionIdManager - Session workerName=node0
+2025-03-18 17:01:08.191 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@35ceec81{/,null,AVAILABLE}
+2025-03-18 17:01:08.196 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@55c03e4{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8080}
+2025-03-18 17:01:08.200 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@1f60824e{SSL, (ssl, alpn, h2, http/1.1)}{0.0.0.0:8443}
+2025-03-18 17:01:08.202 [main] INFO  org.eclipse.jetty.server.Server - Started Server@41059616{STARTING}[11.0.24,sto=0] @4021ms
+2025-03-18 17:01:08.203 [main] INFO  io.javalin.Javalin - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-03-18 17:01:08.204 [main] INFO  io.javalin.Javalin - Javalin started in 168ms \o/
+2025-03-18 17:01:08.206 [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+2025-03-18 17:01:08.206 [main] INFO  io.javalin.Javalin - Listening on https://localhost:8443/
+2025-03-18 17:01:08.218 [main] INFO  io.javalin.Javalin - You are running Javalin 6.4.0 (released December 17, 2024).

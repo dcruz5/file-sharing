@@ -1,5 +1,6 @@
 package gh.filesharing.controllers;
 
+import gh.filesharing.db.FileDAO;
 import gh.filesharing.db.UserDAO;
 import gh.filesharing.lib.AuthManager;
 import gh.filesharing.lib.JwtUtil;
@@ -14,7 +15,13 @@ import java.util.Map;
 public class AuthController {
     private static final Logger log = LoggerFactory.getLogger(AuthController.class);
 
-    public static void login(Context ctx) {
+    private final UserDAO userDAO;
+
+    public AuthController(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
+
+    public void login(Context ctx) {
         String username = ctx.formParam("username");
         String password = ctx.formParam("password");
 
@@ -33,7 +40,7 @@ public class AuthController {
         }
     }
 
-    public static void register(Context ctx) {
+    public void register(Context ctx) {
         String username = ctx.formParam("username");
         String passwordHashed = ctx.formParam("password"); // password will already be hashed
         String email = ctx.formParam("email");
@@ -45,9 +52,7 @@ public class AuthController {
         }
 
         User user = new User(username, passwordHashed, email, isAdmin);
-
-
-
+        this.userDAO.createUser(user);
 
         ctx.json("User " + username + " created successfully");
     }

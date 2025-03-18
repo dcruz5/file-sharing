@@ -1,4 +1,4 @@
-package gh.filesharing.client.Utils;
+package gh.filesharing.client.utils;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.*;

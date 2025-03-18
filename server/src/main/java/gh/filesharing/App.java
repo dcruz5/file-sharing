@@ -16,7 +16,7 @@ import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class App {
     public static void main(String[] args) {
-        String keystorePath = App.class.getClassLoader().getResource("server-keystore.jks").getPath();
+        String keystorePath = App.class.getClassLoader().getResource("keystores/server-keystore.jks").getPath();
         String keystorePassword = "grupo8";
 
         SslPlugin sslPlugin = new SslPlugin(config ->{
@@ -51,17 +51,20 @@ public class App {
     }
 
     private static void routes() {
-        UserDAO userDAO = new UserDAO(); // Create the UserDAO instance
-        UserController userController = new UserController(userDAO); // Inject into UserController
+        // use Dependency Injection
+        UserDAO userDAO = new UserDAO();
+        UserController userController = new UserController(userDAO);
         FileDAO fileDAO = new FileDAO();
         FileController fileController = new FileController(fileDAO);
+        AuthController authController = new AuthController(userDAO);
 
         ApiBuilder.before("files/upload", AuthController::authenticate);
         ApiBuilder.before("/download", AuthController::authenticate);
         ApiBuilder.before("/users", AuthController::authenticate);
         ApiBuilder.before("/users/{userId}", AuthController::authenticate);
 
-        post("login", AuthController::login); // lookup user by username and check if the hashed password is correct
+        post("login", authController::login); // lookup user by username and check if the hashed password is correct
+        //post("/register", authController::register); // already in userController
         post("/share", FileController::share);
         post("files/upload", FileController::upload);
         get("download", FileController::download);

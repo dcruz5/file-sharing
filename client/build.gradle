@@ -38,6 +38,8 @@ dependencies {
     //libreria para encriptar contraseñas
     implementation 'at.favre.lib:bcrypt:0.10.2'
     implementation 'com.formdev:flatlaf:3.2'
+    implementation 'org.apache.httpcomponents.client5:httpclient5:5.4.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.3'
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
@@ -45,10 +47,10 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:4.0.0'
     testImplementation 'org.testfx:testfx-junit5:4.0.16-alpha'
 
-     implementation 'org.openjfx:javafx-controls:17' // Use appropriate version
+    implementation 'org.openjfx:javafx-controls:17' // Use appropriate version
     implementation 'org.openjfx:javafx-swing:17'
 
-      testImplementation 'org.mockito:mockito-core:3.12.4'      // Core mockito
+    testImplementation 'org.mockito:mockito-core:3.12.4'      // Core mockito
     testImplementation 'org.mockito:mockito-inline:3.12.4'
 }
 

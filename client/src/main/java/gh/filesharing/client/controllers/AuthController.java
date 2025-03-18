@@ -2,19 +2,21 @@ package gh.filesharing.client.controllers;
 
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import gh.filesharing.client.Utils.AlertManager;
+import gh.filesharing.client.utils.AlertManager;
+import gh.filesharing.client.utils.ApiClient;
 import gh.filesharing.client.classes.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LoginRegisterController {
+public class AuthController {
 
     @FXML
     public TextField registerEmailField;
@@ -48,23 +50,24 @@ public class LoginRegisterController {
             AlertManager.showError("Las contraseñas no coinciden");
             return;
         }
-         String hashedPassword = BCrypt.withDefaults().hashToString(12, password.toCharArray());
+
+        String hashedPassword = BCrypt.withDefaults().hashToString(12, password.toCharArray());
 
         Map<String, String> params = new HashMap<>();
         params.put("username", username);
         params.put("email", email);
         params.put("password", hashedPassword);
 
-
-        Usuario usuario = new Usuario(username, email, hashedPassword);
-        listaUsuarios.add(usuario);
-        AlertManager.showInfo("Usuario registrado correctamente");
-
-
+        try {
+            String response = ApiClient.post("/users", params);
+            AlertManager.showInfo("Usuario registrado correctamente: " + response);
+        } catch (IOException e) {
+            AlertManager.showError("Error al registrar el usuario: " + e.getMessage());
+        }
     }
 
     public void iniciarSession(ActionEvent actionEvent) {
-         String username = loginUsernameField.getText();
+        String username = loginUsernameField.getText();
         String password = loginPasswordField.getText();
 
         if (username.isEmpty() || password.isEmpty()) {
@@ -72,13 +75,16 @@ public class LoginRegisterController {
             return;
         }
 
-        // Comprobar si el usuario existe en la base de datos
+        Map<String, String> params = new HashMap<>();
+        params.put("username", username);
+        params.put("password", password);
 
-        // Si el usuario no existe, mostrar un mensaje de error
-        // Si el usuario existe, comprobar si la contraseña es correcta
-        // Si la contraseña es correcta, mostrar un mensaje de éxito
-        // Si la contraseña es incorrecta, mostrar un mensaje de error
-
-
+        try {
+            String response = ApiClient.post("/login", params);
+            AlertManager.showInfo("Inicio de sesión exitoso: " + response);
+        } catch (IOException e) {
+            AlertManager.showError("Error al iniciar sesión: " + e.getMessage());
+        }
     }
+
 }

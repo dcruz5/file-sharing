@@ -1,7 +1,7 @@
 package gh.filesharing.client.controllers;
 
 
-import gh.filesharing.client.Utils.SSLClientUtil;
+import gh.filesharing.client.utils.SSLClientUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;

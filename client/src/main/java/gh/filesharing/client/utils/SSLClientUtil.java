@@ -1,4 +1,4 @@
-package gh.filesharing.client.Utils;
+package gh.filesharing.client.utils;
 
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
@@ -6,7 +6,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.UnknownHostException;
 
 public class SSLClientUtil {
 

@@ -43,19 +43,19 @@
 
 ### Subtasques del Client  
 #### Disseny de la interfície gràfica (JavaFX)
-- [ ] Mockups de la interfície (estructura de finestres i botons).
-- [ ] Implementació de la finestra principal.
+- [X] Mockups de la interfície (estructura de finestres i botons).
+- [x] Implementació de la finestra principal.
 
 #### Implementació de la comunicació amb el servidor
-- [ ] Creació d’un client bàsic amb `SSLSocket`.
-- [ ] Enviament de peticions d’autenticació i resposta del servidor.
+- [x] Creació d’un client bàsic amb `SSLSocket`.
+- [x] Enviament de peticions d’autenticació i resposta del servidor.
 
 #### Gestió d'usuaris i autenticació
-- [ ] Creació de la interfície d’inici de sessió i registre.
-- [ ] Implementació del xifrat de contrasenyes i validació amb el servidor.
+- [x] Creació de la interfície d’inici de sessió i registre.
+- [x] Implementació del xifrat de contrasenyes i validació amb el servidor.
 
 #### Implementació de l’enviament i recepció de fitxers
-- [ ] Permetre arrossegar i deixar anar (*drag & drop*) fitxers per pujar-los.
+- [x] Permetre arrossegar i deixar anar (*drag & drop*) fitxers per pujar-los.
 - [ ] Implementació del progrés de pujada i descàrrega.
 
 #### Gestió de permisos i compartició de fitxers

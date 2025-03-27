@@ -4,6 +4,8 @@ module gh.filesharing.client {
     requires com.formdev.flatlaf;
     requires java.desktop;
     requires bcrypt;
+    requires java.net.http;
+    requires jdk.httpserver;
 
 
     opens gh.filesharing.client to javafx.fxml;

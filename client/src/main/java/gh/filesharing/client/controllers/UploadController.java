@@ -110,7 +110,7 @@ public class UploadController {
     public void handleconecion(ActionEvent actionEvent) {
 
         SSLClientUtil SSLClientUtil = new SSLClientUtil();
-        boolean conectado = SSLClientUtil.connectado();
+        boolean conectado = SSLClientUtil.conectar();
 
         if (conectado) {
             statusLabel.setText("Conectado al servidor");

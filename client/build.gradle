@@ -36,6 +36,7 @@ javafx {
 
 dependencies {
     //libreria para encriptar contraseñas
+    
     implementation 'at.favre.lib:bcrypt:0.10.2'
     implementation 'com.formdev:flatlaf:3.2'
 

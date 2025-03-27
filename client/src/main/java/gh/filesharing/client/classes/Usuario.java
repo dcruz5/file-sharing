@@ -9,6 +9,7 @@ public class Usuario {
     private String contrasena;
 
 
+
     //</editor-fold>
 
 
@@ -21,6 +22,9 @@ public class Usuario {
     }
     public Usuario() {
 
+    }
+
+    public Usuario(String username, String s) {
     }
 
 

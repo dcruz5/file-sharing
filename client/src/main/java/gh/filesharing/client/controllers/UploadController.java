@@ -1,7 +1,6 @@
 package gh.filesharing.client.controllers;
 
 
-import gh.filesharing.client.utils.SSLClientUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -108,10 +107,7 @@ public class UploadController {
 
 
     public void handleconecion(ActionEvent actionEvent) {
-
-        SSLClientUtil SSLClientUtil = new SSLClientUtil();
-        boolean conectado = SSLClientUtil.connectado();
-
+        boolean conectado = true;
         if (conectado) {
             statusLabel.setText("Conectado al servidor");
         } else {

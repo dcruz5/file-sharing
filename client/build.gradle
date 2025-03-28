@@ -7,7 +7,7 @@ plugins {
 }
 
 group 'gh.filesharing'
-version '1.0-SNAPSHOT'
+version '1.0.0'
 
 repositories {
     mavenCentral()
@@ -24,6 +24,18 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs 'src/main/resources'
+        }
+    }
+}
+
 application {
     mainModule = 'gh.filesharing.client'
     mainClass = 'gh.filesharing.client.HelloApplication'
@@ -35,7 +47,6 @@ javafx {
 }
 
 dependencies {
-    //libreria para encriptar contraseñas
     implementation 'at.favre.lib:bcrypt:0.10.2'
     implementation 'com.formdev:flatlaf:3.2'
     implementation 'org.apache.httpcomponents.client5:httpclient5:5.4.1'

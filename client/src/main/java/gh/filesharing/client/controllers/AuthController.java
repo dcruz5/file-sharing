@@ -63,10 +63,12 @@ public class AuthController {
             AlertManager.showInfo("Usuario registrado correctamente: " + response);
         } catch (IOException e) {
             AlertManager.showError("Error al registrar el usuario: " + e.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void iniciarSession(ActionEvent actionEvent) {
+    public void iniciarSession(ActionEvent actionEvent) throws Exception {
         String username = loginUsernameField.getText();
         String password = loginPasswordField.getText();
 
@@ -79,10 +81,13 @@ public class AuthController {
         params.put("username", username);
         params.put("password", password);
 
+        String res = ApiClient.get("/health");
+        System.out.println(res);
+
         try {
             String response = ApiClient.post("/login", params);
             AlertManager.showInfo("Inicio de sesión exitoso: " + response);
-        } catch (IOException e) {
+        } catch (Exception e) {
             AlertManager.showError("Error al iniciar sesión: " + e.getMessage());
         }
     }

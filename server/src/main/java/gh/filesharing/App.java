@@ -47,7 +47,7 @@ public class App {
         }).start(8443);
 
         app.before(ctx -> {
-            log.info("Incoming request: [{}] {}", ctx.method(), ctx.path());
+            log.info("Incoming request: [{}] {} (Protocol: {})", ctx.method(), ctx.path(), ctx.protocol());
 
             if (!ctx.queryParamMap().isEmpty()) {
                 log.info("Query Params: {}", ctx.queryParamMap());
@@ -58,7 +58,7 @@ public class App {
             for (Map.Entry<String, String> header : ctx.headerMap().entrySet()) {
                 log.info("Header: {} = {}", header.getKey(), header.getValue());
             }
-            if (ctx.body().length() > 0) {
+            if (!ctx.body().isEmpty()) {
                 log.info("Request Body: {}", ctx.body());
             }
         });
@@ -66,7 +66,7 @@ public class App {
 
         app.get("/health", ctx -> {
             if (DBConnection.isDBHealthy()) {
-                ctx.result("OK!");
+                ctx.status(200).result("OK!");
             } else {
                 ctx.status(500).result("Database connection error");
             }
@@ -76,7 +76,6 @@ public class App {
     }
 
     private static void routes() {
-        // use Dependency Injection
         UserDAO userDAO = new UserDAO();
         UserController userController = new UserController(userDAO);
         FileDAO fileDAO = new FileDAO();
@@ -88,16 +87,11 @@ public class App {
         ApiBuilder.before("/users", AuthController::authenticate);
         ApiBuilder.before("/users/{userId}", AuthController::authenticate);
 
-        post("login", authController::login); // lookup user by username and check if the hashed password is correct
-        post("/register", authController::register); // already in userController
+        post("/login", authController::login);
+        post("/register", authController::register);
         post("/share", FileController::share);
         post("files/upload", FileController::upload);
         get("download", FileController::download);
-
-//        ApiBuilder.path("files", () -> {
-//            post("/upload", FileController::upload);
-//            get("{fileId}/download", FileController::download);
-//        });
 
         crud("files/{fileId}", fileController);
         crud("users/{userId}", userController);

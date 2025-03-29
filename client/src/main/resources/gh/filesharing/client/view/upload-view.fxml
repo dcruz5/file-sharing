@@ -70,7 +70,7 @@
                <children>
 <!--                  <Label fx:id="fileInfoLabel" HBox.hgrow="ALWAYS" />-->
                   <Button fx:id="cancelButton" mnemonicParsing="false"  text="Cancelar" />
-                   <Button fx:id="testConnectionButton" mnemonicParsing="false"  text="Test Connection" onAction="#handleconecion"/>
+                   <Button fx:id="testConnectionButton" mnemonicParsing="false"  text="Test Connection" onAction="#handleConnection"/>
                   <Button fx:id="uploadButton" defaultButton="true" disable="true" mnemonicParsing="false"  text="Subir Archivo" />
                </children>
             </HBox>

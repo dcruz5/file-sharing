@@ -60,7 +60,7 @@
                                 <HBox alignment="CENTER_RIGHT" spacing="10.0">
                                     <children>
                                         <Button fx:id="testConnectionButton" mnemonicParsing="false"
-                                                text="Test Connection" onAction="#handleconecion"/>
+                                                text="Test Connection" onAction="#handleConnection"/>
 
                                         <Button fx:id="loginButton" onAction="#iniciarSession" defaultButton="true"
                                                 mnemonicParsing="false" text="Iniciar sessió"/>

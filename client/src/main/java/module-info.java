@@ -18,4 +18,5 @@ module gh.filesharing.client {
     opens gh.filesharing.client to javafx.fxml;
     opens gh.filesharing.client.controllers to javafx.fxml;
     opens gh.filesharing.client.utils to com.fasterxml.jackson.databind;
+    opens gh.filesharing.client.classes to com.fasterxml.jackson.databind;
 }

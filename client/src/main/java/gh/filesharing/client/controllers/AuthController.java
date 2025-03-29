@@ -1,16 +1,15 @@
 package gh.filesharing.client.controllers;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import gh.filesharing.client.utils.AlertManager;
 import gh.filesharing.client.utils.JwtStore;
-import gh.filesharing.client.utils.ApiRequest;
+import gh.filesharing.client.classes.ApiRequest;
 import gh.filesharing.client.classes.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -23,7 +22,6 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.util.*;
 
-import gh.filesharing.client.utils.SSLClientUtil;
 import gh.filesharing.client.utils.VistaUtil;
 
 public class AuthController {
@@ -46,7 +44,6 @@ public class AuthController {
     public Button loginButton;
 
     private final List<Usuario> listaUsuarios = new ArrayList<>();
-    private SSLClientUtil sslClientUtil;
 
     public void registrarUsuario(ActionEvent actionEvent) {
         String username = registerUsernameField.getText();
@@ -59,13 +56,11 @@ public class AuthController {
             return;
         }
 
-        // Validación de formato de email
         if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
             AlertManager.showError("Por favor, ingrese un email válido");
             return;
         }
 
-        // Validación de longitud de contraseña
         if (password.length() < 6) {
             AlertManager.showError("La contraseña debe tener al menos 6 caracteres");
             return;
@@ -78,21 +73,16 @@ public class AuthController {
 
         String hashedPassword = BCrypt.withDefaults().hashToString(12, password.toCharArray());
 
-        // Verificar conexión con el servidor
-        if (sslClientUtil == null) {
-            sslClientUtil = new SSLClientUtil();
-        }
-
         try {
+            // TODO: should open file manager to select the path to save the private key
             KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
             keyPairGenerator.initialize(2048); // 2048-bit RSA key
             KeyPair keyPair = keyPairGenerator.generateKeyPair();
 
-            // Get the public key and encode it as a string
             PublicKey publicKey = keyPair.getPublic();
             String publicKeyString = Base64.getEncoder().encodeToString(publicKey.getEncoded());
 
-            // Save the private key to a file on the client's PC
+            // pk saved to user's home dir by default
             PrivateKey privateKey = keyPair.getPrivate();
             savePrivateKeyToFile(privateKey);
 
@@ -108,7 +98,6 @@ public class AuthController {
             Usuario usuario = new Usuario(username, email, hashedPassword);
             listaUsuarios.add(usuario);
 
-            // Limpiar campos después del registro exitoso
             registerUsernameField.clear();
             registerEmailField.clear();
             registerPasswordField.clear();
@@ -116,11 +105,9 @@ public class AuthController {
         } catch (Exception e) {
             AlertManager.showError("No se pudo registrar el usuario: " + e.getMessage());
         }
-
-        // Cerrar la conexión SSL
-        sslClientUtil.cerrarConexion();
     }
 
+    // TODO: cuando se implemente (abrir file manager) adaptar este método
     private void savePrivateKeyToFile(PrivateKey privateKey) {
         try {
             String privateKeyString = Base64.getEncoder().encodeToString(privateKey.getEncoded());
@@ -131,6 +118,8 @@ public class AuthController {
         }
     }
 
+    // PARA PRUEBAS:
+    // username: user1, password: 12345 (NO ES ADMIN)
     public void iniciarSession(ActionEvent actionEvent) {
         String username = loginUsernameField.getText();
         String password = loginPasswordField.getText();
@@ -138,10 +127,6 @@ public class AuthController {
         if (username.isEmpty() || password.isEmpty()) {
             AlertManager.showError("Por favor, rellene todos los campos");
             return;
-        }
-
-        if (sslClientUtil == null) {
-            sslClientUtil = new SSLClientUtil();
         }
 
         Map<String, String> params = new HashMap<>();
@@ -163,15 +148,7 @@ public class AuthController {
                 loginUsernameField.clear();
                 loginPasswordField.clear();
 
-                // cambiarVentana();
-                sslClientUtil.cerrarConexion();
-
-//                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/main-view.fxml"));
-//                Parent mainView = loader.load();
-//
-//                Stage stage = (Stage) loginUsernameField.getScene().getWindow();
-//                stage.setScene(new Scene(mainView));
-//                stage.show();
+                cambiarVentana();
             } else {
                 AlertManager.showError("Inicio de sesión fallido: " + response);
             }
@@ -190,26 +167,21 @@ public class AuthController {
             }
             VistaUtil.cerrarVentana(currentStage);
         } catch (Exception e) {
-            AlertManager.showError("Error al cambiar de vista: " + e.getMessage());
             e.printStackTrace();
+            AlertManager.showError("Error al cambiar de vista: " + e.getMessage());
         }
     }
 
-
-    public void handleconecion(ActionEvent actionEvent) {
-        if (sslClientUtil == null) {
-            sslClientUtil = new SSLClientUtil();
-        }
-
-        boolean conectado = sslClientUtil.conectar();
-
-        if (conectado) {
-            statusLabel.setText("Conectado al servidor SSL");
+    public void handleConnection(ActionEvent actionEvent) {
+        String response = ApiRequest.get("/health");
+        if (response != null) {
+            if (response.equals("OK!")) {
+                statusLabel.setText("Conectado al servidor SSL: " + response);
+            } else {
+                statusLabel.setText("Error: " + response);
+            }
         } else {
             statusLabel.setText("No se pudo conectar al servidor SSL");
         }
-
-        // Cerrar la conexión SSL después de verificar
-        sslClientUtil.cerrarConexion();
     }
 }

@@ -1,6 +1,6 @@
 package gh.filesharing.client.controllers;
 
-import gh.filesharing.client.utils.SSLClientUtil;
+import gh.filesharing.client.classes.ApiRequest;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -106,14 +106,16 @@ public class UploadController {
     }
 
 
-    public void handleconecion(ActionEvent actionEvent) {
-        SSLClientUtil SSLClientUtil = new SSLClientUtil();
-        boolean conectado = SSLClientUtil.conectar();
-
-        if (conectado) {
-            statusLabel.setText("Conectado al servidor");
+    public void handleConnection(ActionEvent actionEvent) {
+        String response = ApiRequest.get("/health");
+        if (response != null) {
+            if (response.equals("OK!")) {
+                statusLabel.setText("Conectado al servidor SSL: " + response);
+            } else {
+                statusLabel.setText("Error: " + response);
+            }
         } else {
-            statusLabel.setText("No se pudo conectar al servidor");
+            statusLabel.setText("No se pudo conectar al servidor SSL");
         }
     }
 }

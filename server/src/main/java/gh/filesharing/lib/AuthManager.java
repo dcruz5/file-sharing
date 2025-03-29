@@ -11,6 +11,7 @@ public class AuthManager {
         User foundUser = userDAO.findByUsername(username);
         if (foundUser != null) {
             BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), foundUser.getPasswordHash());
+            System.out.println("[ValidateCredentials]" + result.verified);
             if (result.verified) return JwtUtil.generateToken(username);
         }
 

@@ -28,10 +28,22 @@ public class UserDAO {
 
     public void createUser(User user) {
         EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(user);
-        em.getTransaction().commit();
-        em.close();
+        try {
+            log.info("Attempting to create user: " + user.getUsername());
+
+            em.getTransaction().begin();
+            em.persist(user);
+            em.getTransaction().commit();
+
+            log.info("User created successfully: " + user.getUsername());
+        } catch (Exception e) {
+            log.severe("Error creating user: " + e.getMessage());
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+        } finally {
+            em.close();
+        }
     }
 
     public User getUserById(int id) {

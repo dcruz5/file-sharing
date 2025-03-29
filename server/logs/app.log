@@ -1,148 +1,10 @@
-2025-03-13 17:07:41.570 [Test worker] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: file_sharing]
-2025-03-13 17:07:41.605 [Test worker] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.9.Final
-2025-03-13 17:07:41.627 [Test worker] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-03-13 17:07:41.709 [Test worker] WARN  org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator - HHH000181: No appropriate connection provider encountered, assuming application will be supplying connections
-2025-03-13 17:07:41.721 [Test worker] WARN  org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator - HHH000342: Could not obtain connection to query metadata
-java.lang.UnsupportedOperationException: The application must supply JDBC connections
-	at org.hibernate.engine.jdbc.connections.internal.UserSuppliedConnectionProviderImpl.getConnection(UserSuppliedConnectionProviderImpl.java:44) ~[hibernate-core-6.6.9.Final.jar:6.6.9.Final]
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:467) ~[hibernate-core-6.6.9.Final.jar:6.6.9.Final]
-	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61) ~[hibernate-core-6.6.9.Final.jar:6.6.9.Final]
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:320) ~[hibernate-core-6.6.9.Final.jar:6.6.9.Final]
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:129) ~[hibernate-core-6.6.9.Final.jar:6.6.9.Final]
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:81) ~[hibernate-core-6.6.9.Final.jar:6.6.9.Final]
-	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130) ~[hibernate-core-6.6.9.Final.jar:6.6.9.Final]
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-6.6.9.Final.jar:6.6.9.Final]
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238) ~[hibernate-core-6.6.9.Final.jar:6.6.9.Final]
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215) ~[hibernate-core-6.6.9.Final.jar:6.6.9.Final]
-	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.6.9.Final.jar:6.6.9.Final]
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:226) ~[hibernate-core-6.6.9.Final.jar:6.6.9.Final]
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:194) ~[hibernate-core-6.6.9.Final.jar:6.6.9.Final]
-	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171) ~[hibernate-core-6.6.9.Final.jar:6.6.9.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1442) ~[hibernate-core-6.6.9.Final.jar:6.6.9.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1513) ~[hibernate-core-6.6.9.Final.jar:6.6.9.Final]
-	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:55) ~[hibernate-core-6.6.9.Final.jar:6.6.9.Final]
-	at jakarta.persistence.Persistence.createEntityManagerFactory(Persistence.java:80) ~[jakarta.persistence-api-3.1.0.jar:3.1.0]
-	at jakarta.persistence.Persistence.createEntityManagerFactory(Persistence.java:55) ~[jakarta.persistence-api-3.1.0.jar:3.1.0]
-	at gh.filesharing.db.JPAUtil.<clinit>(JPAUtil.java:9) ~[main/:?]
-	at gh.filesharing.db.UserDAO.<clinit>(UserDAO.java:14) ~[main/:?]
-	at jdk.internal.reflect.GeneratedSerializationConstructorAccessor15.newInstance(Unknown Source) ~[?:?]
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[?:?]
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[?:?]
-	at org.objenesis.instantiator.sun.SunReflectionFactoryInstantiator.newInstance(SunReflectionFactoryInstantiator.java:48) ~[objenesis-3.2.jar:3.2]
-	at org.objenesis.ObjenesisBase.newInstance(ObjenesisBase.java:73) ~[objenesis-3.2.jar:3.2]
-	at org.mockito.internal.creation.instance.ObjenesisInstantiator.newInstance(ObjenesisInstantiator.java:22) ~[mockito-core-4.6.1.jar:?]
-	at org.mockito.internal.creation.bytebuddy.SubclassByteBuddyMockMaker.createMock(SubclassByteBuddyMockMaker.java:48) ~[mockito-core-4.6.1.jar:?]
-	at org.mockito.internal.creation.bytebuddy.ByteBuddyMockMaker.createMock(ByteBuddyMockMaker.java:42) ~[mockito-core-4.6.1.jar:?]
-	at org.mockito.internal.util.MockUtil.createMock(MockUtil.java:53) ~[mockito-core-4.6.1.jar:?]
-	at org.mockito.internal.MockitoCore.mock(MockitoCore.java:96) ~[mockito-core-4.6.1.jar:?]
-	at org.mockito.Mockito.mock(Mockito.java:1981) ~[mockito-core-4.6.1.jar:?]
-	at org.mockito.Mockito.mock(Mockito.java:1896) ~[mockito-core-4.6.1.jar:?]
-	at gh.filesharing.controllers.UserControllerTest.setUp(UserControllerTest.java:24) ~[test/:?]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
-	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727) ~[junit-platform-commons-1.9.1.jar:1.9.1]
-	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptLifecycleMethod(TimeoutExtension.java:128) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptBeforeEachMethod(TimeoutExtension.java:78) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeMethodInExtensionContext(ClassBasedTestDescriptor.java:520) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$synthesizeBeforeEachMethodAdapter$23(ClassBasedTestDescriptor.java:505) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeBeforeEachMethods$3(TestMethodTestDescriptor.java:174) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeBeforeMethodsOrCallbacksUntilExceptionOccurs$6(TestMethodTestDescriptor.java:202) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeBeforeMethodsOrCallbacksUntilExceptionOccurs(TestMethodTestDescriptor.java:202) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeBeforeEachMethods(TestMethodTestDescriptor.java:171) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:134) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68) ~[junit-jupiter-engine-5.9.1.jar:5.9.1]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.9.1.jar:1.9.1]
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67) [junit-platform-launcher-1.8.2.jar:1.8.2]
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52) [junit-platform-launcher-1.8.2.jar:1.8.2]
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114) [junit-platform-launcher-1.8.2.jar:1.8.2]
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86) [junit-platform-launcher-1.8.2.jar:1.8.2]
-	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86) [junit-platform-launcher-1.8.2.jar:1.8.2]
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:110) [gradle-testing-junit-platform-8.2.jar:8.2]
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:90) [gradle-testing-junit-platform-8.2.jar:8.2]
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:85) [gradle-testing-junit-platform-8.2.jar:8.2]
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:62) [gradle-testing-base-8.2.jar:8.2]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36) [gradle-messaging-8.2.jar:8.2]
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) [gradle-messaging-8.2.jar:8.2]
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33) [gradle-messaging-8.2.jar:8.2]
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94) [gradle-messaging-8.2.jar:8.2]
-	at jdk.proxy1/jdk.proxy1.$Proxy2.stop(Unknown Source) [?:?]
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193) [gradle-testing-base-8.2.jar:8.2]
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129) [gradle-testing-base-8.2.jar:8.2]
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100) [gradle-testing-base-8.2.jar:8.2]
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60) [gradle-testing-base-8.2.jar:8.2]
-	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56) [gradle-worker-processes-8.2.jar:8.2]
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:113) [gradle-worker-processes-8.2.jar:8.2]
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:65) [gradle-worker-processes-8.2.jar:8.2]
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) [gradle-worker.jar:?]
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) [gradle-worker.jar:?]
-2025-03-13 17:07:41.745 [Test worker] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-13 17:07:41.758 [Test worker] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
-	Database JDBC URL [undefined/unknown]
-	Database driver: undefined/unknown
-	Database version: 8.0
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-03-13 17:07:42.285 [Test worker] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-13 17:08:10.220 [Test worker] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: file_sharing]
-2025-03-13 17:08:10.259 [Test worker] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.9.Final
-2025-03-13 17:08:10.283 [Test worker] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-03-13 17:08:10.391 [Test worker] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
-2025-03-13 17:08:11.800 [Test worker] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
-2025-03-13 17:08:11.804 [Test worker] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-13 17:08:11.899 [Test worker] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+2025-03-28 17:15:33.897 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: file_sharing]
+2025-03-28 17:15:33.945 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.9.Final
+2025-03-28 17:15:33.971 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-03-28 17:15:34.070 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-03-28 17:15:35.371 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-03-28 17:15:35.375 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-28 17:15:35.458 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
 	Database JDBC URL [jdbc:mysql://cicles.ies-eugeni.cat:3306/dcruz_db]
 	Database driver: com.mysql.cj.jdbc.Driver
 	Database version: 5.5.5
@@ -150,84 +12,16 @@ java.lang.UnsupportedOperationException: The application must supply JDBC connec
 	Isolation level: undefined/unknown
 	Minimum pool size: 1
 	Maximum pool size: 20
-2025-03-13 17:08:12.591 [Test worker] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-13 17:08:12.712 [Test worker] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@76fc5687] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-2025-03-13 17:08:23.404 [Test worker] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: file_sharing]
-2025-03-13 17:08:23.438 [Test worker] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.9.Final
-2025-03-13 17:08:23.459 [Test worker] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-03-13 17:08:23.541 [Test worker] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
-2025-03-13 17:08:24.435 [Test worker] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
-2025-03-13 17:08:24.441 [Test worker] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-13 17:08:24.542 [Test worker] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
-	Database JDBC URL [jdbc:mysql://cicles.ies-eugeni.cat:3306/dcruz_db]
-	Database driver: com.mysql.cj.jdbc.Driver
-	Database version: 5.5.5
-	Autocommit mode: false
-	Isolation level: undefined/unknown
-	Minimum pool size: 1
-	Maximum pool size: 20
-2025-03-13 17:08:25.077 [Test worker] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-13 17:08:25.196 [Test worker] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@76fc5687] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-2025-03-13 17:23:20.315 [Test worker] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: file_sharing]
-2025-03-13 17:23:20.350 [Test worker] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.9.Final
-2025-03-13 17:23:20.369 [Test worker] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-03-13 17:23:20.452 [Test worker] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
-2025-03-13 17:23:21.478 [Test worker] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
-2025-03-13 17:23:21.481 [Test worker] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-13 17:23:21.695 [Test worker] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
-	Database JDBC URL [jdbc:mysql://cicles.ies-eugeni.cat:3306/dcruz_db]
-	Database driver: com.mysql.cj.jdbc.Driver
-	Database version: 5.5.5
-	Autocommit mode: false
-	Isolation level: undefined/unknown
-	Minimum pool size: 1
-	Maximum pool size: 20
-2025-03-13 17:23:22.226 [Test worker] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-13 17:23:22.294 [Test worker] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@335b3d6] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-2025-03-13 17:23:23.711 [Test worker] INFO  gh.filesharing.controllers.FileController - User Alice downloaded a file
-2025-03-13 17:23:23.714 [Test worker] INFO  gh.filesharing.controllers.FileController - User Optional[Alice] shared a file
-2025-03-13 17:23:37.661 [Test worker] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: file_sharing]
-2025-03-13 17:23:37.697 [Test worker] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.9.Final
-2025-03-13 17:23:37.720 [Test worker] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-03-13 17:23:37.810 [Test worker] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
-2025-03-13 17:23:38.597 [Test worker] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
-2025-03-13 17:23:38.600 [Test worker] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-13 17:23:38.658 [Test worker] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
-	Database JDBC URL [jdbc:mysql://cicles.ies-eugeni.cat:3306/dcruz_db]
-	Database driver: com.mysql.cj.jdbc.Driver
-	Database version: 5.5.5
-	Autocommit mode: false
-	Isolation level: undefined/unknown
-	Minimum pool size: 1
-	Maximum pool size: 20
-2025-03-13 17:23:39.192 [Test worker] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-13 17:23:39.273 [Test worker] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@1eb6037d] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-2025-03-13 17:23:40.706 [Test worker] INFO  gh.filesharing.controllers.FileController - User Alice downloaded a file
-2025-03-13 17:23:40.708 [Test worker] INFO  gh.filesharing.controllers.FileController - User Optional[Alice] shared a file
-2025-03-18 16:25:28.384 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: file_sharing]
-2025-03-18 16:25:28.415 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.9.Final
-2025-03-18 16:25:28.435 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-03-18 16:25:28.517 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
-2025-03-18 16:25:29.724 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
-2025-03-18 16:25:29.727 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-18 16:25:29.821 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
-	Database JDBC URL [jdbc:mysql://cicles.ies-eugeni.cat:3306/dcruz_db]
-	Database driver: com.mysql.cj.jdbc.Driver
-	Database version: 5.5.5
-	Autocommit mode: false
-	Isolation level: undefined/unknown
-	Minimum pool size: 1
-	Maximum pool size: 20
-2025-03-18 16:25:30.488 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-18 16:25:30.648 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@30fbc23] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-2025-03-18 16:25:32.482 [main] INFO  io.javalin.Javalin - Starting Javalin ...
-2025-03-18 16:25:32.483 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 17.0.14+7-Ubuntu-122.04.1
-2025-03-18 16:25:32.517 [main] INFO  org.eclipse.jetty.server.session.DefaultSessionIdManager - Session workerName=node0
-2025-03-18 16:25:32.523 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@35ceec81{/,null,AVAILABLE}
-2025-03-18 16:25:32.529 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@55c03e4{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8080}
-2025-03-18 16:25:32.534 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@1f60824e{SSL, (ssl, alpn, h2, http/1.1)}{0.0.0.0:8443}
-2025-03-18 16:25:32.536 [main] INFO  org.eclipse.jetty.server.Server - Started Server@41059616{STARTING}[11.0.24,sto=0] @4853ms
-2025-03-18 16:25:32.536 [main] INFO  io.javalin.Javalin - 
+2025-03-28 17:15:36.200 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-28 17:15:36.271 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@fabef2e] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-03-28 17:15:38.026 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2025-03-28 17:15:38.028 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 17.0.14+7-Ubuntu-122.04.1
+2025-03-28 17:15:38.080 [main] INFO  org.eclipse.jetty.server.session.DefaultSessionIdManager - Session workerName=node0
+2025-03-28 17:15:38.087 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@eb1d475{/,null,AVAILABLE}
+2025-03-28 17:15:38.093 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@1ad1be5d{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8080}
+2025-03-28 17:15:38.098 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@38cb1606{SSL, (ssl, alpn, h2, http/1.1)}{0.0.0.0:8443}
+2025-03-28 17:15:38.101 [main] INFO  org.eclipse.jetty.server.Server - Started Server@5abbb273{STARTING}[11.0.24,sto=0] @4905ms
+2025-03-28 17:15:38.101 [main] INFO  io.javalin.Javalin - 
        __                  ___           _____
       / /___ __   ______ _/ (_)___      / ___/
  __  / / __ `/ | / / __ `/ / / __ \    / __ \
@@ -236,17 +30,17 @@ java.lang.UnsupportedOperationException: The application must supply JDBC connec
 
        https://javalin.io/documentation
 
-2025-03-18 16:25:32.537 [main] INFO  io.javalin.Javalin - Javalin started in 166ms \o/
-2025-03-18 16:25:32.539 [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
-2025-03-18 16:25:32.539 [main] INFO  io.javalin.Javalin - Listening on https://localhost:8443/
-2025-03-18 16:25:32.548 [main] INFO  io.javalin.Javalin - You are running Javalin 6.4.0 (released December 17, 2024).
-2025-03-18 17:01:04.942 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: file_sharing]
-2025-03-18 17:01:04.974 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.9.Final
-2025-03-18 17:01:04.997 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-03-18 17:01:05.084 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
-2025-03-18 17:01:05.694 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
-2025-03-18 17:01:05.699 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-18 17:01:05.778 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+2025-03-28 17:15:38.102 [main] INFO  io.javalin.Javalin - Javalin started in 295ms \o/
+2025-03-28 17:15:38.105 [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+2025-03-28 17:15:38.105 [main] INFO  io.javalin.Javalin - Listening on https://localhost:8443/
+2025-03-28 17:15:38.115 [main] INFO  io.javalin.Javalin - You are running Javalin 6.4.0 (released December 17, 2024).
+2025-03-28 17:18:33.461 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: file_sharing]
+2025-03-28 17:18:33.492 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.9.Final
+2025-03-28 17:18:33.513 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-03-28 17:18:33.599 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-03-28 17:18:34.375 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-03-28 17:18:34.378 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-28 17:18:34.434 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
 	Database JDBC URL [jdbc:mysql://cicles.ies-eugeni.cat:3306/dcruz_db]
 	Database driver: com.mysql.cj.jdbc.Driver
 	Database version: 5.5.5
@@ -254,16 +48,16 @@ java.lang.UnsupportedOperationException: The application must supply JDBC connec
 	Isolation level: undefined/unknown
 	Minimum pool size: 1
 	Maximum pool size: 20
-2025-03-18 17:01:06.534 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-03-18 17:01:06.603 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@30fbc23] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-2025-03-18 17:01:08.149 [main] INFO  io.javalin.Javalin - Starting Javalin ...
-2025-03-18 17:01:08.151 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 17.0.14+7-Ubuntu-122.04.1
-2025-03-18 17:01:08.184 [main] INFO  org.eclipse.jetty.server.session.DefaultSessionIdManager - Session workerName=node0
-2025-03-18 17:01:08.191 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@35ceec81{/,null,AVAILABLE}
-2025-03-18 17:01:08.196 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@55c03e4{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8080}
-2025-03-18 17:01:08.200 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@1f60824e{SSL, (ssl, alpn, h2, http/1.1)}{0.0.0.0:8443}
-2025-03-18 17:01:08.202 [main] INFO  org.eclipse.jetty.server.Server - Started Server@41059616{STARTING}[11.0.24,sto=0] @4021ms
-2025-03-18 17:01:08.203 [main] INFO  io.javalin.Javalin - 
+2025-03-28 17:18:35.068 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-28 17:18:35.180 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@49cb5030] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-03-28 17:18:37.113 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2025-03-28 17:18:37.115 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 17.0.14+7-Ubuntu-122.04.1
+2025-03-28 17:18:37.149 [main] INFO  org.eclipse.jetty.server.session.DefaultSessionIdManager - Session workerName=node0
+2025-03-28 17:18:37.155 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@192f5f39{/,null,AVAILABLE}
+2025-03-28 17:18:37.161 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@57f2e67{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8080}
+2025-03-28 17:18:37.166 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@4387d2f4{SSL, (ssl, alpn, h2, http/1.1)}{0.0.0.0:8443}
+2025-03-28 17:18:37.167 [main] INFO  org.eclipse.jetty.server.Server - Started Server@563843f1{STARTING}[11.0.24,sto=0] @4339ms
+2025-03-28 17:18:37.167 [main] INFO  io.javalin.Javalin - 
        __                  ___           _____
       / /___ __   ______ _/ (_)___      / ___/
  __  / / __ `/ | / / __ `/ / / __ \    / __ \
@@ -272,7 +66,585 @@ java.lang.UnsupportedOperationException: The application must supply JDBC connec
 
        https://javalin.io/documentation
 
-2025-03-18 17:01:08.204 [main] INFO  io.javalin.Javalin - Javalin started in 168ms \o/
-2025-03-18 17:01:08.206 [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
-2025-03-18 17:01:08.206 [main] INFO  io.javalin.Javalin - Listening on https://localhost:8443/
-2025-03-18 17:01:08.218 [main] INFO  io.javalin.Javalin - You are running Javalin 6.4.0 (released December 17, 2024).
+2025-03-28 17:18:37.168 [main] INFO  io.javalin.Javalin - Javalin started in 162ms \o/
+2025-03-28 17:18:37.171 [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+2025-03-28 17:18:37.171 [main] INFO  io.javalin.Javalin - Listening on https://localhost:8443/
+2025-03-28 17:18:37.179 [main] INFO  io.javalin.Javalin - You are running Javalin 6.4.0 (released December 17, 2024).
+2025-03-28 17:18:41.973 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Incoming request: [GET] /health
+2025-03-28 17:18:41.975 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Accept = application/json
+2025-03-28 17:18:41.975 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 17:18:41.975 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 17:18:41.975 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 17:18:41.975 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 17:18:41.975 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Upgrade = TLS/1.2
+2025-03-28 17:18:42.539 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Incoming request: [POST] /login
+2025-03-28 17:18:42.540 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Form Params: {{"password":"123434","username":"usuari"}=[]}
+2025-03-28 17:18:42.540 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 17:18:42.540 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 17:18:42.540 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 17:18:42.540 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 17:18:42.541 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Content-Length = 41
+2025-03-28 17:18:42.541 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Content-Type = application/json
+2025-03-28 17:18:42.541 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Request Body: {"password":"123434","username":"usuari"}
+2025-03-28 17:22:38.431 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: file_sharing]
+2025-03-28 17:22:38.459 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.9.Final
+2025-03-28 17:22:38.480 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-03-28 17:22:38.580 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-03-28 17:22:39.451 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-03-28 17:22:39.454 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-28 17:22:39.519 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://cicles.ies-eugeni.cat:3306/dcruz_db]
+	Database driver: com.mysql.cj.jdbc.Driver
+	Database version: 5.5.5
+	Autocommit mode: false
+	Isolation level: undefined/unknown
+	Minimum pool size: 1
+	Maximum pool size: 20
+2025-03-28 17:22:40.153 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-28 17:22:40.281 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@49cb5030] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-03-28 17:22:42.043 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2025-03-28 17:22:42.045 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 17.0.14+7-Ubuntu-122.04.1
+2025-03-28 17:22:42.080 [main] INFO  org.eclipse.jetty.server.session.DefaultSessionIdManager - Session workerName=node0
+2025-03-28 17:22:42.086 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@192f5f39{/,null,AVAILABLE}
+2025-03-28 17:22:42.092 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@57f2e67{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8080}
+2025-03-28 17:22:42.097 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@4387d2f4{SSL, (ssl, alpn, h2, http/1.1)}{0.0.0.0:8443}
+2025-03-28 17:22:42.098 [main] INFO  org.eclipse.jetty.server.Server - Started Server@563843f1{STARTING}[11.0.24,sto=0] @4309ms
+2025-03-28 17:22:42.098 [main] INFO  io.javalin.Javalin - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-03-28 17:22:42.099 [main] INFO  io.javalin.Javalin - Javalin started in 156ms \o/
+2025-03-28 17:22:42.101 [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+2025-03-28 17:22:42.102 [main] INFO  io.javalin.Javalin - Listening on https://localhost:8443/
+2025-03-28 17:22:42.111 [main] INFO  io.javalin.Javalin - You are running Javalin 6.4.0 (released December 17, 2024).
+2025-03-28 17:26:42.517 [JettyServerThreadPool-27] INFO  gh.filesharing.App - Incoming request: [GET] /health
+2025-03-28 17:26:42.519 [JettyServerThreadPool-27] INFO  gh.filesharing.App - Header: Accept = application/json
+2025-03-28 17:26:42.519 [JettyServerThreadPool-27] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 17:26:42.519 [JettyServerThreadPool-27] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 17:26:42.519 [JettyServerThreadPool-27] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 17:26:42.519 [JettyServerThreadPool-27] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 17:26:42.519 [JettyServerThreadPool-27] INFO  gh.filesharing.App - Header: Upgrade = TLS/1.2
+2025-03-28 17:26:43.265 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Incoming request: [POST] /login
+2025-03-28 17:26:43.266 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Form Params: {{"password":"34324","username":"2334"}=[]}
+2025-03-28 17:26:43.266 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 17:26:43.266 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 17:26:43.266 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 17:26:43.266 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 17:26:43.266 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Content-Length = 38
+2025-03-28 17:26:43.266 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Content-Type = application/json
+2025-03-28 17:26:43.267 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Request Body: {"password":"34324","username":"2334"}
+2025-03-28 17:26:43.637 [JettyServerThreadPool-28] WARN  gh.filesharing.controllers.AuthController - Failed login attempt for username: 2334.
+2025-03-28 17:43:03.216 [JettyServerThreadPool-55] INFO  gh.filesharing.App - Incoming request: [POST] /register
+2025-03-28 17:43:03.217 [JettyServerThreadPool-55] INFO  gh.filesharing.App - Form Params: {{"publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqZf/kYNxqlhRtqpR4s79uM2yZWVh6m6zCa57e8HnS2TgCuR9iM8ElOkyrg1qY7ku1TxS5E5vokthp/xHhFeb/Oakgyk3iVY4OfX8Mn6/ANB0LlCBdAloIOQMZyQwPRXrhZlEcSMR7DgkH89z4NC39HWZ2RNIGLkps4Enx/NhvV gb7KDyMrELvpxCgao/SLdllXtz sL1Hn4grBOpxvknEYDK7F0u0SHTauX6t6nnMh0IzkFiR6ul5nFXc3J kD 8 vNkLV0U/DrkGyeR5LbPNSz V4TA4 tdcynIwNdgYBSwb7ue6cKu H05/74NLkg2MOdsdniimjfR9ZIo/2a wIDAQAB","email":"test@test.com","passwordHash":"$2a$12$/QOUYE164XHIyYotsSze4egNTMku4uBp/DpRL7FLw/k5NIrmTiAZy","username":"user1"}=[]}
+2025-03-28 17:43:03.217 [JettyServerThreadPool-55] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 17:43:03.217 [JettyServerThreadPool-55] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 17:43:03.217 [JettyServerThreadPool-55] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 17:43:03.217 [JettyServerThreadPool-55] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 17:43:03.217 [JettyServerThreadPool-55] INFO  gh.filesharing.App - Header: Content-Length = 529
+2025-03-28 17:43:03.217 [JettyServerThreadPool-55] INFO  gh.filesharing.App - Header: Content-Type = application/json
+2025-03-28 17:43:03.218 [JettyServerThreadPool-55] INFO  gh.filesharing.App - Request Body: {"publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqZf/kYNxqlhRtqpR4s79uM2yZWVh6m6zCa57e8HnS2TgCuR9iM8ElOkyrg1qY7ku1TxS5E5vokthp/xHhFeb/Oakgyk3iVY4OfX8Mn6/ANB0LlCBdAloIOQMZyQwPRXrhZlEcSMR7DgkH89z4NC39HWZ2RNIGLkps4Enx/NhvV+gb7KDyMrELvpxCgao/SLdllXtz+sL1Hn4grBOpxvknEYDK7F0u0SHTauX6t6nnMh0IzkFiR6ul5nFXc3J+kD+8+vNkLV0U/DrkGyeR5LbPNSz+V4TA4+tdcynIwNdgYBSwb7ue6cKu+H05/74NLkg2MOdsdniimjfR9ZIo/2a+wIDAQAB","email":"test@test.com","passwordHash":"$2a$12$/QOUYE164XHIyYotsSze4egNTMku4uBp/DpRL7FLw/k5NIrmTiAZy","username":"user1"}
+2025-03-28 17:45:55.773 [JettyServerThreadPool-56] INFO  gh.filesharing.App - Incoming request: [GET] /health
+2025-03-28 17:45:55.773 [JettyServerThreadPool-56] INFO  gh.filesharing.App - Header: Accept = application/json
+2025-03-28 17:45:55.773 [JettyServerThreadPool-56] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 17:45:55.773 [JettyServerThreadPool-56] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 17:45:55.773 [JettyServerThreadPool-56] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 17:45:55.773 [JettyServerThreadPool-56] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 17:45:55.773 [JettyServerThreadPool-56] INFO  gh.filesharing.App - Header: Upgrade = TLS/1.2
+2025-03-28 17:45:56.137 [JettyServerThreadPool-31] INFO  gh.filesharing.App - Incoming request: [POST] /login
+2025-03-28 17:45:56.137 [JettyServerThreadPool-31] INFO  gh.filesharing.App - Form Params: {{"password":"12345","username":"user1"}=[]}
+2025-03-28 17:45:56.137 [JettyServerThreadPool-31] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 17:45:56.138 [JettyServerThreadPool-31] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 17:45:56.138 [JettyServerThreadPool-31] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 17:45:56.138 [JettyServerThreadPool-31] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 17:45:56.138 [JettyServerThreadPool-31] INFO  gh.filesharing.App - Header: Content-Length = 39
+2025-03-28 17:45:56.138 [JettyServerThreadPool-31] INFO  gh.filesharing.App - Header: Content-Type = application/json
+2025-03-28 17:45:56.138 [JettyServerThreadPool-31] INFO  gh.filesharing.App - Request Body: {"password":"12345","username":"user1"}
+2025-03-28 17:45:56.495 [JettyServerThreadPool-31] WARN  gh.filesharing.controllers.AuthController - Failed login attempt for username: user1.
+2025-03-28 17:50:35.106 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: file_sharing]
+2025-03-28 17:50:35.134 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.9.Final
+2025-03-28 17:50:35.156 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-03-28 17:50:35.267 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-03-28 17:50:36.170 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-03-28 17:50:36.173 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-28 17:50:36.267 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://cicles.ies-eugeni.cat:3306/dcruz_db]
+	Database driver: com.mysql.cj.jdbc.Driver
+	Database version: 5.5.5
+	Autocommit mode: false
+	Isolation level: undefined/unknown
+	Minimum pool size: 1
+	Maximum pool size: 20
+2025-03-28 17:50:36.913 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-28 17:50:36.984 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@30fbc23] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-03-28 17:50:39.071 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2025-03-28 17:50:39.073 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 17.0.14+7-Ubuntu-122.04.1
+2025-03-28 17:50:39.107 [main] INFO  org.eclipse.jetty.server.session.DefaultSessionIdManager - Session workerName=node0
+2025-03-28 17:50:39.113 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@3221588e{/,null,AVAILABLE}
+2025-03-28 17:50:39.119 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@11cadb32{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8080}
+2025-03-28 17:50:39.123 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@d949bc4{SSL, (ssl, alpn, h2, http/1.1)}{0.0.0.0:8443}
+2025-03-28 17:50:39.124 [main] INFO  org.eclipse.jetty.server.Server - Started Server@655909e2{STARTING}[11.0.24,sto=0] @4710ms
+2025-03-28 17:50:39.124 [main] INFO  io.javalin.Javalin - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-03-28 17:50:39.125 [main] INFO  io.javalin.Javalin - Javalin started in 178ms \o/
+2025-03-28 17:50:39.127 [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+2025-03-28 17:50:39.127 [main] INFO  io.javalin.Javalin - Listening on https://localhost:8443/
+2025-03-28 17:50:39.136 [main] INFO  io.javalin.Javalin - You are running Javalin 6.4.0 (released December 17, 2024).
+2025-03-28 17:50:42.709 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Incoming request: [GET] /health
+2025-03-28 17:50:42.710 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Accept = application/json
+2025-03-28 17:50:42.711 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 17:50:42.711 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 17:50:42.711 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 17:50:42.711 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 17:50:42.711 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Upgrade = TLS/1.2
+2025-03-28 17:50:43.158 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Incoming request: [POST] /login
+2025-03-28 17:50:43.159 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Form Params: {{"password":"$2a$12$DszFYsKCNxSzpsY9eD6SeudMROBBC6zYOG1kR.sxrZZkFjAkfrtSW","username":"user1"}=[]}
+2025-03-28 17:50:43.159 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 17:50:43.159 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 17:50:43.160 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 17:50:43.160 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 17:50:43.160 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Content-Length = 94
+2025-03-28 17:50:43.160 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Content-Type = application/json
+2025-03-28 17:50:43.160 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Request Body: {"password":"$2a$12$DszFYsKCNxSzpsY9eD6SeudMROBBC6zYOG1kR.sxrZZkFjAkfrtSW","username":"user1"}
+2025-03-28 17:50:43.423 [JettyServerThreadPool-28] WARN  gh.filesharing.controllers.AuthController - Failed login attempt for username: user1.
+2025-03-28 17:54:00.257 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: file_sharing]
+2025-03-28 17:54:00.290 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.9.Final
+2025-03-28 17:54:00.315 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-03-28 17:54:00.404 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-03-28 17:54:01.386 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-03-28 17:54:01.390 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-28 17:54:01.502 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://cicles.ies-eugeni.cat:3306/dcruz_db]
+	Database driver: com.mysql.cj.jdbc.Driver
+	Database version: 5.5.5
+	Autocommit mode: false
+	Isolation level: undefined/unknown
+	Minimum pool size: 1
+	Maximum pool size: 20
+2025-03-28 17:54:02.193 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-28 17:54:02.298 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@30fbc23] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-03-28 17:54:04.244 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2025-03-28 17:54:04.246 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 17.0.14+7-Ubuntu-122.04.1
+2025-03-28 17:54:04.280 [main] INFO  org.eclipse.jetty.server.session.DefaultSessionIdManager - Session workerName=node0
+2025-03-28 17:54:04.287 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@3221588e{/,null,AVAILABLE}
+2025-03-28 17:54:04.292 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@11cadb32{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8080}
+2025-03-28 17:54:04.297 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@d949bc4{SSL, (ssl, alpn, h2, http/1.1)}{0.0.0.0:8443}
+2025-03-28 17:54:04.298 [main] INFO  org.eclipse.jetty.server.Server - Started Server@655909e2{STARTING}[11.0.24,sto=0] @4718ms
+2025-03-28 17:54:04.298 [main] INFO  io.javalin.Javalin - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-03-28 17:54:04.299 [main] INFO  io.javalin.Javalin - Javalin started in 174ms \o/
+2025-03-28 17:54:04.302 [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+2025-03-28 17:54:04.302 [main] INFO  io.javalin.Javalin - Listening on https://localhost:8443/
+2025-03-28 17:54:04.310 [main] INFO  io.javalin.Javalin - You are running Javalin 6.4.0 (released December 17, 2024).
+2025-03-28 17:54:20.786 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Incoming request: [GET] /health
+2025-03-28 17:54:20.788 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Accept = application/json
+2025-03-28 17:54:20.788 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 17:54:20.788 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 17:54:20.788 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 17:54:20.788 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 17:54:20.788 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Upgrade = TLS/1.2
+2025-03-28 17:54:21.261 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Incoming request: [POST] /login
+2025-03-28 17:54:21.262 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Form Params: {{"password":"$2a$12$5260Vj0KVGFxt9B48WEkKeLHuBUTB4TUHnf6tgBpBLA2uKVhtQQxq","username":"user1"}=[]}
+2025-03-28 17:54:21.262 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 17:54:21.262 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 17:54:21.263 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 17:54:21.263 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 17:54:21.263 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Content-Length = 94
+2025-03-28 17:54:21.263 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Content-Type = application/json
+2025-03-28 17:54:21.263 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Request Body: {"password":"$2a$12$5260Vj0KVGFxt9B48WEkKeLHuBUTB4TUHnf6tgBpBLA2uKVhtQQxq","username":"user1"}
+2025-03-28 17:54:21.583 [JettyServerThreadPool-28] WARN  gh.filesharing.controllers.AuthController - Failed login attempt for username: user1.
+2025-03-28 18:00:04.399 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: file_sharing]
+2025-03-28 18:00:04.431 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.9.Final
+2025-03-28 18:00:04.452 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-03-28 18:00:04.537 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-03-28 18:00:05.531 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-03-28 18:00:05.534 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-28 18:00:05.634 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://cicles.ies-eugeni.cat:3306/dcruz_db]
+	Database driver: com.mysql.cj.jdbc.Driver
+	Database version: 5.5.5
+	Autocommit mode: false
+	Isolation level: undefined/unknown
+	Minimum pool size: 1
+	Maximum pool size: 20
+2025-03-28 18:00:06.332 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-28 18:00:06.411 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@30fbc23] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-03-28 18:00:08.748 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2025-03-28 18:00:08.750 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 17.0.14+7-Ubuntu-122.04.1
+2025-03-28 18:00:08.783 [main] INFO  org.eclipse.jetty.server.session.DefaultSessionIdManager - Session workerName=node0
+2025-03-28 18:00:08.790 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@3221588e{/,null,AVAILABLE}
+2025-03-28 18:00:08.797 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@11cadb32{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8080}
+2025-03-28 18:00:08.804 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@d949bc4{SSL, (ssl, alpn, h2, http/1.1)}{0.0.0.0:8443}
+2025-03-28 18:00:08.806 [main] INFO  org.eclipse.jetty.server.Server - Started Server@655909e2{STARTING}[11.0.24,sto=0] @5044ms
+2025-03-28 18:00:08.806 [main] INFO  io.javalin.Javalin - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-03-28 18:00:08.807 [main] INFO  io.javalin.Javalin - Javalin started in 164ms \o/
+2025-03-28 18:00:08.810 [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+2025-03-28 18:00:08.810 [main] INFO  io.javalin.Javalin - Listening on https://localhost:8443/
+2025-03-28 18:00:08.819 [main] INFO  io.javalin.Javalin - You are running Javalin 6.4.0 (released December 17, 2024).
+2025-03-28 18:00:18.526 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Incoming request: [POST] /register
+2025-03-28 18:00:18.528 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Form Params: {{"publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwtlpvwj7UY5xqGeFAKfD 6SbBzxKJwu8l4 HUL9YLeBnAZVwNYZgdaLcO8svadGb3D8yOBX DmANN0ehbvJfEt4iUvZxBFHgR/DirTGqNWWBwZ91tOYb1qbcq3y/dS6aNuFvV9unJwB xV0f2TsGapWS4fA3n OJJ iB6EH4u2Gjau8xE6 SpWlDALOQe4TrMyxVNNchMmp APHWYSWDtjRYIpR2gj9jso51yQwLQoasXk3zYUjOFLCIvARe25dbiSBRLOdDhCfibM8aUJRmL4ZsWm5zBTYAcvd55vsm0zaF7MRnK0NYiY6broxohwXHx2t8AnbskiDuAWzJ3DjFkQIDAQAB","email":"test@test.com","passwordHash":"$2a$12$b3hFqk2Kllg6kU2qFZUfxOwvhhSYzrFf3wzyeCCSEfiWnOZdzMHrm","username":"user1"}=[]}
+2025-03-28 18:00:18.528 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 18:00:18.529 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 18:00:18.529 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 18:00:18.529 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 18:00:18.529 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Content-Length = 529
+2025-03-28 18:00:18.529 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Content-Type = application/json
+2025-03-28 18:00:18.529 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Request Body: {"publicKey":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwtlpvwj7UY5xqGeFAKfD+6SbBzxKJwu8l4+HUL9YLeBnAZVwNYZgdaLcO8svadGb3D8yOBX+DmANN0ehbvJfEt4iUvZxBFHgR/DirTGqNWWBwZ91tOYb1qbcq3y/dS6aNuFvV9unJwB+xV0f2TsGapWS4fA3n+OJJ+iB6EH4u2Gjau8xE6+SpWlDALOQe4TrMyxVNNchMmp+APHWYSWDtjRYIpR2gj9jso51yQwLQoasXk3zYUjOFLCIvARe25dbiSBRLOdDhCfibM8aUJRmL4ZsWm5zBTYAcvd55vsm0zaF7MRnK0NYiY6broxohwXHx2t8AnbskiDuAWzJ3DjFkQIDAQAB","email":"test@test.com","passwordHash":"$2a$12$b3hFqk2Kllg6kU2qFZUfxOwvhhSYzrFf3wzyeCCSEfiWnOZdzMHrm","username":"user1"}
+2025-03-28 18:00:18.557 [JettyServerThreadPool-51] INFO  gh.filesharing.controllers.AuthController - Received user registration: user1
+2025-03-28 18:00:18.941 [JettyServerThreadPool-51] INFO  gh.filesharing.controllers.AuthController - User successfully saved: user1
+2025-03-28 18:01:09.140 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Incoming request: [GET] /health
+2025-03-28 18:01:09.141 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Accept = application/json
+2025-03-28 18:01:09.141 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 18:01:09.141 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 18:01:09.141 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 18:01:09.141 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 18:01:09.141 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Upgrade = TLS/1.2
+2025-03-28 18:01:09.634 [JettyServerThreadPool-29] INFO  gh.filesharing.App - Incoming request: [POST] /login
+2025-03-28 18:01:09.635 [JettyServerThreadPool-29] INFO  gh.filesharing.App - Form Params: {{"password":"12345","username":"user1"}=[]}
+2025-03-28 18:01:09.636 [JettyServerThreadPool-29] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 18:01:09.637 [JettyServerThreadPool-29] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 18:01:09.637 [JettyServerThreadPool-29] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 18:01:09.637 [JettyServerThreadPool-29] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 18:01:09.638 [JettyServerThreadPool-29] INFO  gh.filesharing.App - Header: Content-Length = 39
+2025-03-28 18:01:09.638 [JettyServerThreadPool-29] INFO  gh.filesharing.App - Header: Content-Type = application/json
+2025-03-28 18:01:09.638 [JettyServerThreadPool-29] INFO  gh.filesharing.App - Request Body: {"password":"12345","username":"user1"}
+2025-03-28 18:01:10.292 [JettyServerThreadPool-29] ERROR io.javalin.Javalin - Fatal error occurred while servicing http-request
+java.lang.ExceptionInInitializerError: null
+	at gh.filesharing.lib.JwtUtil.<clinit>(JwtUtil.java:18) ~[main/:?]
+	at gh.filesharing.lib.AuthManager.validateCredentials(AuthManager.java:15) ~[main/:?]
+	at gh.filesharing.controllers.AuthController.login(AuthController.java:37) ~[main/:?]
+	at io.javalin.router.Endpoint.handle(Endpoint.kt:52) ~[javalin-6.4.0.jar:6.4.0]
+	at io.javalin.router.ParsedEndpoint.handle(ParsedEndpoint.kt:15) ~[javalin-6.4.0.jar:6.4.0]
+	at io.javalin.http.servlet.DefaultTasks.HTTP$lambda$9$lambda$7$lambda$6(DefaultTasks.kt:52) ~[javalin-6.4.0.jar:6.4.0]
+	at io.javalin.http.servlet.JavalinServlet.handleTask(JavalinServlet.kt:99) ~[javalin-6.4.0.jar:6.4.0]
+	at io.javalin.http.servlet.JavalinServlet.handleSync(JavalinServlet.kt:64) ~[javalin-6.4.0.jar:6.4.0]
+	at io.javalin.http.servlet.JavalinServlet.handle(JavalinServlet.kt:50) ~[javalin-6.4.0.jar:6.4.0]
+	at io.javalin.http.servlet.JavalinServlet.service(JavalinServlet.kt:30) ~[javalin-6.4.0.jar:6.4.0]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:587) ~[jetty-jakarta-servlet-api-5.0.2.jar:?]
+	at io.javalin.jetty.JavalinJettyServlet.service(JavalinJettyServlet.kt:52) ~[javalin-6.4.0.jar:6.4.0]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:587) ~[jetty-jakarta-servlet-api-5.0.2.jar:?]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:764) ~[jetty-servlet-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:529) ~[jetty-servlet-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1580) ~[jetty-server-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1381) ~[jetty-server-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:176) ~[jetty-server-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:484) ~[jetty-servlet-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1553) ~[jetty-server-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:174) ~[jetty-server-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1303) ~[jetty-server-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:129) ~[jetty-server-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.server.handler.StatisticsHandler.handle(StatisticsHandler.java:173) ~[jetty-server-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.server.Server.handle(Server.java:563) ~[jetty-server-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.server.HttpChannel$RequestDispatchable.dispatch(HttpChannel.java:1598) ~[jetty-server-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:753) ~[jetty-server-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:501) ~[jetty-server-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:287) ~[jetty-server-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:314) ~[jetty-io-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:100) ~[jetty-io-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.io.SelectableChannelEndPoint$1.run(SelectableChannelEndPoint.java:53) ~[jetty-io-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.runTask(AdaptiveExecutionStrategy.java:421) ~[jetty-util-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.consumeTask(AdaptiveExecutionStrategy.java:390) ~[jetty-util-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.tryProduce(AdaptiveExecutionStrategy.java:277) ~[jetty-util-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.produce(AdaptiveExecutionStrategy.java:193) ~[jetty-util-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) [jetty-util-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) [jetty-util-11.0.24.jar:11.0.24]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) [jetty-util-11.0.24.jar:11.0.24]
+	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
+Caused by: io.github.cdimascio.dotenv.DotEnvException: Could not find /.env on the classpath
+	at io.github.cdimascio.dotenv.internal.ClasspathHelper.loadFileFromClasspath(ClassPathHelper.kt:37) ~[java-dotenv-5.2.2.jar:?]
+	at io.github.cdimascio.dotenv.internal.DotenvReader.read(DotenvReader.kt:36) ~[java-dotenv-5.2.2.jar:?]
+	at io.github.cdimascio.dotenv.internal.DotenvParser.parse(DotenvParser.kt:26) ~[java-dotenv-5.2.2.jar:?]
+	at io.github.cdimascio.dotenv.DotenvBuilder.load(Dotenv.kt:124) ~[java-dotenv-5.2.2.jar:?]
+	at io.github.cdimascio.dotenv.Dotenv$Instance.load(Dotenv.kt:32) ~[java-dotenv-5.2.2.jar:?]
+	at io.github.cdimascio.dotenv.Dotenv.load(Dotenv.kt) ~[java-dotenv-5.2.2.jar:?]
+	at gh.filesharing.config.ConfigLoader.<clinit>(ConfigLoader.java:6) ~[main/:?]
+	... 43 more
+	Suppressed: io.github.cdimascio.dotenv.DotEnvException: Could not find ./.env on the file system (working directory: /home/nai/projects/file-sharing-app/server)
+		at io.github.cdimascio.dotenv.internal.DotenvReader.read(DotenvReader.kt:40) ~[java-dotenv-5.2.2.jar:?]
+		at io.github.cdimascio.dotenv.internal.DotenvParser.parse(DotenvParser.kt:26) ~[java-dotenv-5.2.2.jar:?]
+		at io.github.cdimascio.dotenv.DotenvBuilder.load(Dotenv.kt:124) ~[java-dotenv-5.2.2.jar:?]
+		at io.github.cdimascio.dotenv.Dotenv$Instance.load(Dotenv.kt:32) ~[java-dotenv-5.2.2.jar:?]
+		at io.github.cdimascio.dotenv.Dotenv.load(Dotenv.kt) ~[java-dotenv-5.2.2.jar:?]
+		at gh.filesharing.config.ConfigLoader.<clinit>(ConfigLoader.java:6) ~[main/:?]
+		at gh.filesharing.lib.JwtUtil.<clinit>(JwtUtil.java:18) ~[main/:?]
+		at gh.filesharing.lib.AuthManager.validateCredentials(AuthManager.java:15) ~[main/:?]
+		at gh.filesharing.controllers.AuthController.login(AuthController.java:37) ~[main/:?]
+		at io.javalin.router.Endpoint.handle(Endpoint.kt:52) ~[javalin-6.4.0.jar:6.4.0]
+		at io.javalin.router.ParsedEndpoint.handle(ParsedEndpoint.kt:15) ~[javalin-6.4.0.jar:6.4.0]
+		at io.javalin.http.servlet.DefaultTasks.HTTP$lambda$9$lambda$7$lambda$6(DefaultTasks.kt:52) ~[javalin-6.4.0.jar:6.4.0]
+		at io.javalin.http.servlet.JavalinServlet.handleTask(JavalinServlet.kt:99) ~[javalin-6.4.0.jar:6.4.0]
+		at io.javalin.http.servlet.JavalinServlet.handleSync(JavalinServlet.kt:64) ~[javalin-6.4.0.jar:6.4.0]
+		at io.javalin.http.servlet.JavalinServlet.handle(JavalinServlet.kt:50) ~[javalin-6.4.0.jar:6.4.0]
+		at io.javalin.http.servlet.JavalinServlet.service(JavalinServlet.kt:30) ~[javalin-6.4.0.jar:6.4.0]
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:587) ~[jetty-jakarta-servlet-api-5.0.2.jar:?]
+		at io.javalin.jetty.JavalinJettyServlet.service(JavalinJettyServlet.kt:52) ~[javalin-6.4.0.jar:6.4.0]
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:587) ~[jetty-jakarta-servlet-api-5.0.2.jar:?]
+		at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:764) ~[jetty-servlet-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:529) ~[jetty-servlet-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1580) ~[jetty-server-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1381) ~[jetty-server-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:176) ~[jetty-server-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:484) ~[jetty-servlet-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1553) ~[jetty-server-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:174) ~[jetty-server-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1303) ~[jetty-server-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:129) ~[jetty-server-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.server.handler.StatisticsHandler.handle(StatisticsHandler.java:173) ~[jetty-server-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.server.Server.handle(Server.java:563) ~[jetty-server-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.server.HttpChannel$RequestDispatchable.dispatch(HttpChannel.java:1598) ~[jetty-server-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:753) ~[jetty-server-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:501) ~[jetty-server-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:287) ~[jetty-server-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:314) ~[jetty-io-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:100) ~[jetty-io-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.io.SelectableChannelEndPoint$1.run(SelectableChannelEndPoint.java:53) ~[jetty-io-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.runTask(AdaptiveExecutionStrategy.java:421) ~[jetty-util-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.consumeTask(AdaptiveExecutionStrategy.java:390) ~[jetty-util-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.tryProduce(AdaptiveExecutionStrategy.java:277) ~[jetty-util-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.produce(AdaptiveExecutionStrategy.java:193) ~[jetty-util-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) [jetty-util-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) [jetty-util-11.0.24.jar:11.0.24]
+		at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) [jetty-util-11.0.24.jar:11.0.24]
+		at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
+2025-03-28 18:02:00.232 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: file_sharing]
+2025-03-28 18:02:00.268 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.9.Final
+2025-03-28 18:02:00.296 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-03-28 18:02:00.410 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-03-28 18:02:01.152 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-03-28 18:02:01.156 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-28 18:02:01.220 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://cicles.ies-eugeni.cat:3306/dcruz_db]
+	Database driver: com.mysql.cj.jdbc.Driver
+	Database version: 5.5.5
+	Autocommit mode: false
+	Isolation level: undefined/unknown
+	Minimum pool size: 1
+	Maximum pool size: 20
+2025-03-28 18:02:02.020 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-28 18:02:02.110 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@30fbc23] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-03-28 18:02:04.035 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2025-03-28 18:02:04.038 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 17.0.14+7-Ubuntu-122.04.1
+2025-03-28 18:02:04.076 [main] INFO  org.eclipse.jetty.server.session.DefaultSessionIdManager - Session workerName=node0
+2025-03-28 18:02:04.084 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@3221588e{/,null,AVAILABLE}
+2025-03-28 18:02:04.093 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@11cadb32{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8080}
+2025-03-28 18:02:04.099 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@d949bc4{SSL, (ssl, alpn, h2, http/1.1)}{0.0.0.0:8443}
+2025-03-28 18:02:04.101 [main] INFO  org.eclipse.jetty.server.Server - Started Server@655909e2{STARTING}[11.0.24,sto=0] @4646ms
+2025-03-28 18:02:04.101 [main] INFO  io.javalin.Javalin - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-03-28 18:02:04.102 [main] INFO  io.javalin.Javalin - Javalin started in 227ms \o/
+2025-03-28 18:02:04.104 [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+2025-03-28 18:02:04.105 [main] INFO  io.javalin.Javalin - Listening on https://localhost:8443/
+2025-03-28 18:02:04.116 [main] INFO  io.javalin.Javalin - You are running Javalin 6.4.0 (released December 17, 2024).
+2025-03-28 18:03:54.452 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: file_sharing]
+2025-03-28 18:03:54.483 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.9.Final
+2025-03-28 18:03:54.504 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-03-28 18:03:54.601 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-03-28 18:03:55.337 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-03-28 18:03:55.341 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-28 18:03:55.401 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://cicles.ies-eugeni.cat:3306/dcruz_db]
+	Database driver: com.mysql.cj.jdbc.Driver
+	Database version: 5.5.5
+	Autocommit mode: false
+	Isolation level: undefined/unknown
+	Minimum pool size: 1
+	Maximum pool size: 20
+2025-03-28 18:03:56.059 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-28 18:03:56.156 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@30fbc23] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-03-28 18:03:58.067 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2025-03-28 18:03:58.069 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 17.0.14+7-Ubuntu-122.04.1
+2025-03-28 18:03:58.104 [main] INFO  org.eclipse.jetty.server.session.DefaultSessionIdManager - Session workerName=node0
+2025-03-28 18:03:58.111 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@3221588e{/,null,AVAILABLE}
+2025-03-28 18:03:58.117 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@11cadb32{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8080}
+2025-03-28 18:03:58.122 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@d949bc4{SSL, (ssl, alpn, h2, http/1.1)}{0.0.0.0:8443}
+2025-03-28 18:03:58.123 [main] INFO  org.eclipse.jetty.server.Server - Started Server@655909e2{STARTING}[11.0.24,sto=0] @4306ms
+2025-03-28 18:03:58.124 [main] INFO  io.javalin.Javalin - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-03-28 18:03:58.125 [main] INFO  io.javalin.Javalin - Javalin started in 163ms \o/
+2025-03-28 18:03:58.127 [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+2025-03-28 18:03:58.127 [main] INFO  io.javalin.Javalin - Listening on https://localhost:8443/
+2025-03-28 18:03:58.136 [main] INFO  io.javalin.Javalin - You are running Javalin 6.4.0 (released December 17, 2024).
+2025-03-28 18:03:58.346 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Incoming request: [GET] /health
+2025-03-28 18:03:58.348 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Accept = application/json
+2025-03-28 18:03:58.348 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 18:03:58.348 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 18:03:58.348 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 18:03:58.349 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 18:03:58.349 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Upgrade = TLS/1.2
+2025-03-28 18:03:58.800 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Incoming request: [POST] /login
+2025-03-28 18:03:58.803 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Form Params: {{"password":"12345","username":"user1"}=[]}
+2025-03-28 18:03:58.804 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 18:03:58.805 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 18:03:58.805 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 18:03:58.806 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 18:03:58.806 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Content-Length = 39
+2025-03-28 18:03:58.807 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Content-Type = application/json
+2025-03-28 18:03:58.808 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Request Body: {"password":"12345","username":"user1"}
+2025-03-28 18:03:59.528 [JettyServerThreadPool-28] INFO  gh.filesharing.controllers.AuthController - User user1 logged in successfully.
+2025-03-28 18:06:06.793 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Incoming request: [GET] /health
+2025-03-28 18:06:06.794 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Accept = application/json
+2025-03-28 18:06:06.794 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 18:06:06.795 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 18:06:06.795 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 18:06:06.796 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 18:06:06.796 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Upgrade = TLS/1.2
+2025-03-28 18:06:07.048 [JettyServerThreadPool-30] INFO  gh.filesharing.App - Incoming request: [POST] /login
+2025-03-28 18:06:07.049 [JettyServerThreadPool-30] INFO  gh.filesharing.App - Form Params: {{"password":"12345","username":"user1"}=[]}
+2025-03-28 18:06:07.049 [JettyServerThreadPool-30] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 18:06:07.050 [JettyServerThreadPool-30] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 18:06:07.050 [JettyServerThreadPool-30] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 18:06:07.051 [JettyServerThreadPool-30] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 18:06:07.051 [JettyServerThreadPool-30] INFO  gh.filesharing.App - Header: Content-Length = 39
+2025-03-28 18:06:07.051 [JettyServerThreadPool-30] INFO  gh.filesharing.App - Header: Content-Type = application/json
+2025-03-28 18:06:07.051 [JettyServerThreadPool-30] INFO  gh.filesharing.App - Request Body: {"password":"12345","username":"user1"}
+2025-03-28 18:06:07.515 [JettyServerThreadPool-30] INFO  gh.filesharing.controllers.AuthController - User user1 logged in successfully.
+2025-03-28 18:06:20.365 [JettyServerThreadPool-31] INFO  gh.filesharing.App - Incoming request: [GET] /health
+2025-03-28 18:06:20.366 [JettyServerThreadPool-31] INFO  gh.filesharing.App - Header: Accept = application/json
+2025-03-28 18:06:20.366 [JettyServerThreadPool-31] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 18:06:20.366 [JettyServerThreadPool-31] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 18:06:20.366 [JettyServerThreadPool-31] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 18:06:20.366 [JettyServerThreadPool-31] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 18:06:20.366 [JettyServerThreadPool-31] INFO  gh.filesharing.App - Header: Upgrade = TLS/1.2
+2025-03-28 18:06:20.757 [JettyServerThreadPool-32] INFO  gh.filesharing.App - Incoming request: [POST] /login
+2025-03-28 18:06:20.758 [JettyServerThreadPool-32] INFO  gh.filesharing.App - Form Params: {{"password":"12345","username":"user1"}=[]}
+2025-03-28 18:06:20.758 [JettyServerThreadPool-32] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 18:06:20.758 [JettyServerThreadPool-32] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 18:06:20.758 [JettyServerThreadPool-32] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 18:06:20.759 [JettyServerThreadPool-32] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 18:06:20.759 [JettyServerThreadPool-32] INFO  gh.filesharing.App - Header: Content-Length = 39
+2025-03-28 18:06:20.759 [JettyServerThreadPool-32] INFO  gh.filesharing.App - Header: Content-Type = application/json
+2025-03-28 18:06:20.759 [JettyServerThreadPool-32] INFO  gh.filesharing.App - Request Body: {"password":"12345","username":"user1"}
+2025-03-28 18:06:21.355 [JettyServerThreadPool-32] INFO  gh.filesharing.controllers.AuthController - User user1 logged in successfully.
+2025-03-28 18:11:51.698 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: file_sharing]
+2025-03-28 18:11:51.729 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.9.Final
+2025-03-28 18:11:51.750 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-03-28 18:11:51.852 [main] WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using built-in connection pool (not intended for production use)
+2025-03-28 18:11:52.645 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2025-03-28 18:11:52.649 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-28 18:11:52.712 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://cicles.ies-eugeni.cat:3306/dcruz_db]
+	Database driver: com.mysql.cj.jdbc.Driver
+	Database version: 5.5.5
+	Autocommit mode: false
+	Isolation level: undefined/unknown
+	Minimum pool size: 1
+	Maximum pool size: 20
+2025-03-28 18:11:53.387 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-28 18:11:53.488 [main] INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@30fbc23] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2025-03-28 18:11:55.576 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2025-03-28 18:11:55.578 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.24; built: 2024-08-26T18:11:22.448Z; git: 5dfc59a691b748796f922208956bd1f2794bcd16; jvm 17.0.14+7-Ubuntu-122.04.1
+2025-03-28 18:11:55.609 [main] INFO  org.eclipse.jetty.server.session.DefaultSessionIdManager - Session workerName=node0
+2025-03-28 18:11:55.615 [main] INFO  org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@3221588e{/,null,AVAILABLE}
+2025-03-28 18:11:55.620 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@11cadb32{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8080}
+2025-03-28 18:11:55.624 [main] INFO  org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@d949bc4{SSL, (ssl, alpn, h2, http/1.1)}{0.0.0.0:8443}
+2025-03-28 18:11:55.625 [main] INFO  org.eclipse.jetty.server.Server - Started Server@655909e2{STARTING}[11.0.24,sto=0] @4615ms
+2025-03-28 18:11:55.625 [main] INFO  io.javalin.Javalin - 
+       __                  ___           _____
+      / /___ __   ______ _/ (_)___      / ___/
+ __  / / __ `/ | / / __ `/ / / __ \    / __ \
+/ /_/ / /_/ /| |/ / /_/ / / / / / /   / /_/ /
+\____/\__,_/ |___/\__,_/_/_/_/ /_/    \____/
+
+       https://javalin.io/documentation
+
+2025-03-28 18:11:55.626 [main] INFO  io.javalin.Javalin - Javalin started in 171ms \o/
+2025-03-28 18:11:55.628 [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+2025-03-28 18:11:55.629 [main] INFO  io.javalin.Javalin - Listening on https://localhost:8443/
+2025-03-28 18:11:55.636 [main] INFO  io.javalin.Javalin - You are running Javalin 6.4.0 (released December 17, 2024).
+2025-03-28 18:11:57.257 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Incoming request: [GET] /health
+2025-03-28 18:11:57.259 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Accept = application/json
+2025-03-28 18:11:57.259 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 18:11:57.259 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 18:11:57.259 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 18:11:57.259 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 18:11:57.259 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Upgrade = TLS/1.2
+2025-03-28 18:11:57.754 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Incoming request: [POST] /login
+2025-03-28 18:11:57.755 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Form Params: {{"password":"12345","username":"user1"}=[]}
+2025-03-28 18:11:57.755 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 18:11:57.755 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 18:11:57.756 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 18:11:57.756 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 18:11:57.756 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Content-Length = 39
+2025-03-28 18:11:57.756 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Header: Content-Type = application/json
+2025-03-28 18:11:57.756 [JettyServerThreadPool-28] INFO  gh.filesharing.App - Request Body: {"password":"12345","username":"user1"}
+2025-03-28 18:11:58.340 [JettyServerThreadPool-28] INFO  gh.filesharing.controllers.AuthController - User user1 logged in successfully.
+2025-03-28 18:13:05.365 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Incoming request: [GET] /health
+2025-03-28 18:13:05.366 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Accept = application/json
+2025-03-28 18:13:05.366 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 18:13:05.367 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 18:13:05.367 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 18:13:05.368 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 18:13:05.368 [JettyServerThreadPool-51] INFO  gh.filesharing.App - Header: Upgrade = TLS/1.2
+2025-03-28 18:13:05.590 [JettyServerThreadPool-30] INFO  gh.filesharing.App - Incoming request: [POST] /login
+2025-03-28 18:13:05.590 [JettyServerThreadPool-30] INFO  gh.filesharing.App - Form Params: {{"password":"12345","username":"user1"}=[]}
+2025-03-28 18:13:05.590 [JettyServerThreadPool-30] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 18:13:05.591 [JettyServerThreadPool-30] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 18:13:05.591 [JettyServerThreadPool-30] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 18:13:05.591 [JettyServerThreadPool-30] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 18:13:05.591 [JettyServerThreadPool-30] INFO  gh.filesharing.App - Header: Content-Length = 39
+2025-03-28 18:13:05.591 [JettyServerThreadPool-30] INFO  gh.filesharing.App - Header: Content-Type = application/json
+2025-03-28 18:13:05.591 [JettyServerThreadPool-30] INFO  gh.filesharing.App - Request Body: {"password":"12345","username":"user1"}
+2025-03-28 18:13:06.052 [JettyServerThreadPool-30] INFO  gh.filesharing.controllers.AuthController - User user1 logged in successfully.
+2025-03-28 18:16:07.303 [JettyServerThreadPool-54] INFO  gh.filesharing.App - Incoming request: [GET] /health
+2025-03-28 18:16:07.303 [JettyServerThreadPool-54] INFO  gh.filesharing.App - Header: Accept = application/json
+2025-03-28 18:16:07.303 [JettyServerThreadPool-54] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 18:16:07.303 [JettyServerThreadPool-54] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 18:16:07.303 [JettyServerThreadPool-54] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 18:16:07.303 [JettyServerThreadPool-54] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 18:16:07.303 [JettyServerThreadPool-54] INFO  gh.filesharing.App - Header: Upgrade = TLS/1.2
+2025-03-28 18:16:07.624 [JettyServerThreadPool-32] INFO  gh.filesharing.App - Incoming request: [POST] /login
+2025-03-28 18:16:07.624 [JettyServerThreadPool-32] INFO  gh.filesharing.App - Form Params: {{"password":"12345","username":"user1"}=[]}
+2025-03-28 18:16:07.625 [JettyServerThreadPool-32] INFO  gh.filesharing.App - Header: Connection = keep-alive
+2025-03-28 18:16:07.625 [JettyServerThreadPool-32] INFO  gh.filesharing.App - Header: User-Agent = Apache-HttpClient/5.4.1 (Java/17.0.9)
+2025-03-28 18:16:07.625 [JettyServerThreadPool-32] INFO  gh.filesharing.App - Header: Host = localhost:8080
+2025-03-28 18:16:07.625 [JettyServerThreadPool-32] INFO  gh.filesharing.App - Header: Accept-Encoding = gzip, x-gzip, deflate
+2025-03-28 18:16:07.625 [JettyServerThreadPool-32] INFO  gh.filesharing.App - Header: Content-Length = 39
+2025-03-28 18:16:07.625 [JettyServerThreadPool-32] INFO  gh.filesharing.App - Header: Content-Type = application/json
+2025-03-28 18:16:07.625 [JettyServerThreadPool-32] INFO  gh.filesharing.App - Request Body: {"password":"12345","username":"user1"}
+2025-03-28 18:16:08.223 [JettyServerThreadPool-32] INFO  gh.filesharing.controllers.AuthController - User user1 logged in successfully.

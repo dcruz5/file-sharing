@@ -1,40 +1,42 @@
 package gh.filesharing.client.controllers;
 
-
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import com.google.gson.Gson;
 import gh.filesharing.client.utils.AlertManager;
-import gh.filesharing.client.utils.ApiClient;
+import gh.filesharing.client.utils.JwtStore;
+import gh.filesharing.client.utils.ApiRequest;
 import gh.filesharing.client.classes.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.util.*;
 
 public class AuthController {
 
     @FXML
     public TextField registerEmailField;
     @FXML
-
     public TextField registerUsernameField;
     @FXML
-
     public PasswordField registerPasswordField;
     @FXML
-
     public PasswordField registerConfirmPasswordField;
     @FXML
     public TextField loginUsernameField;
     @FXML
     public PasswordField loginPasswordField;
 
-    private List<Usuario> listaUsuarios=new ArrayList<>() ;
+    private final List<Usuario> listaUsuarios = new ArrayList<>();
 
     public void registrarUsuario(ActionEvent actionEvent) {
         String username = registerUsernameField.getText();
@@ -53,22 +55,45 @@ public class AuthController {
 
         String hashedPassword = BCrypt.withDefaults().hashToString(12, password.toCharArray());
 
-        Map<String, String> params = new HashMap<>();
-        params.put("username", username);
-        params.put("email", email);
-        params.put("password", hashedPassword);
-
         try {
-            String response = ApiClient.post("/users", params);
+            KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+            keyPairGenerator.initialize(2048); // 2048-bit RSA key
+            KeyPair keyPair = keyPairGenerator.generateKeyPair();
+
+            // Get the public key and encode it as a string
+            PublicKey publicKey = keyPair.getPublic();
+            String publicKeyString = Base64.getEncoder().encodeToString(publicKey.getEncoded());
+
+            // Save the private key to a file on the client's PC
+            PrivateKey privateKey = keyPair.getPrivate();
+            savePrivateKeyToFile(privateKey);
+
+            Map<String, String> params = new HashMap<>();
+            params.put("username", username);
+            params.put("email", email);
+            params.put("passwordHash", hashedPassword);
+            params.put("publicKey", publicKeyString);
+
+            String response = ApiRequest.post("/register", params);
             AlertManager.showInfo("Usuario registrado correctamente: " + response);
-        } catch (IOException e) {
-            AlertManager.showError("Error al registrar el usuario: " + e.getMessage());
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            AlertManager.showError("Error al registrar el usuario: " + e.getMessage());
         }
     }
 
-    public void iniciarSession(ActionEvent actionEvent) throws Exception {
+    private void savePrivateKeyToFile(PrivateKey privateKey) {
+        try {
+            // You can use File I/O to save the private key to a file on the user's system
+            String privateKeyString = Base64.getEncoder().encodeToString(privateKey.getEncoded());
+            // Save to file (for simplicity, we're assuming it's being saved in the user's home directory)
+            java.nio.file.Files.write(java.nio.file.Paths.get(System.getProperty("user.home") + "/private_key.pem"), privateKeyString.getBytes());
+            AlertManager.showInfo("Private key saved to your computer.");
+        } catch (Exception e) {
+            AlertManager.showError("Error saving private key: " + e.getMessage());
+        }
+    }
+
+    public void iniciarSession(ActionEvent actionEvent) {
         String username = loginUsernameField.getText();
         String password = loginPasswordField.getText();
 
@@ -81,15 +106,29 @@ public class AuthController {
         params.put("username", username);
         params.put("password", password);
 
-        String res = ApiClient.get("/health");
-        System.out.println(res);
-
         try {
-            String response = ApiClient.post("/login", params);
-            AlertManager.showInfo("Inicio de sesión exitoso: " + response);
+            String response = ApiRequest.post("/login", params);
+            System.out.println("Login Response: " + response);
+
+            if (response != null && response.contains("token")) {
+                AlertManager.showInfo("Inicio de sesión exitoso");
+
+                Map<String, String> responseMap = new Gson().fromJson(response, Map.class);
+                String token = responseMap.get("token");
+
+                JwtStore.saveToken(token);
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/main-view.fxml"));
+                Parent mainView = loader.load();
+
+                Stage stage = (Stage) loginUsernameField.getScene().getWindow();
+                stage.setScene(new Scene(mainView));
+                stage.show();
+            } else {
+                AlertManager.showError("Inicio de sesión fallido: " + response);
+            }
         } catch (Exception e) {
             AlertManager.showError("Error al iniciar sesión: " + e.getMessage());
         }
     }
-
 }

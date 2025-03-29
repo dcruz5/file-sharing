@@ -7,6 +7,8 @@ module gh.filesharing.client {
     requires org.apache.httpcomponents.core5.httpcore5;
     requires com.fasterxml.jackson.databind;
     requires bcrypt;
+    requires com.google.gson;
+    requires java.prefs;
 
     exports gh.filesharing.client;
     exports gh.filesharing.client.controllers;

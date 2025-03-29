@@ -11,20 +11,27 @@ import io.javalin.apibuilder.ApiBuilder;
 import io.javalin.community.ssl.SslPlugin;
 import io.javalin.community.ssl.TlsConfig;
 import io.javalin.plugin.bundled.CorsPluginConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.InputStream;
+import java.util.Map;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class App {
+    private static final Logger log = LoggerFactory.getLogger(App.class);
+
     public static void main(String[] args) {
-        String keystorePath = App.class.getClassLoader().getResource("keystores/server-keystore.jks").getPath();
+        InputStream keystoreInputStream = App.class.getClassLoader().getResourceAsStream("keystores/server-keystore.jks");
         String keystorePassword = "grupo8";
 
         SslPlugin sslPlugin = new SslPlugin(config ->{
-            config.keystoreFromPath(keystorePath, keystorePassword);
+            config.keystoreFromInputStream(keystoreInputStream, keystorePassword);
             config.http2 = true;
             config.securePort = 8443;
             config.insecurePort = 8080;
-            config.redirect = true;
+            // config.redirect = true;
             config.tlsConfig = TlsConfig.MODERN; // TLS configuration
             config.sniHostCheck = false;    // SNI hostname verification.
         });
@@ -38,6 +45,24 @@ public class App {
             });
 
         }).start(8443);
+
+        app.before(ctx -> {
+            log.info("Incoming request: [{}] {}", ctx.method(), ctx.path());
+
+            if (!ctx.queryParamMap().isEmpty()) {
+                log.info("Query Params: {}", ctx.queryParamMap());
+            }
+            if (!ctx.formParamMap().isEmpty()) {
+                log.info("Form Params: {}", ctx.formParamMap());
+            }
+            for (Map.Entry<String, String> header : ctx.headerMap().entrySet()) {
+                log.info("Header: {} = {}", header.getKey(), header.getValue());
+            }
+            if (ctx.body().length() > 0) {
+                log.info("Request Body: {}", ctx.body());
+            }
+        });
+
 
         app.get("/health", ctx -> {
             if (DBConnection.isDBHealthy()) {
@@ -64,7 +89,7 @@ public class App {
         ApiBuilder.before("/users/{userId}", AuthController::authenticate);
 
         post("login", authController::login); // lookup user by username and check if the hashed password is correct
-        //post("/register", authController::register); // already in userController
+        post("/register", authController::register); // already in userController
         post("/share", FileController::share);
         post("files/upload", FileController::upload);
         get("download", FileController::download);

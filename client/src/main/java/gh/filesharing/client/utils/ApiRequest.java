@@ -8,10 +8,12 @@ import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.io.entity.StringEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Map;
 
-public class SimpleApiRequest {
+public class ApiRequest {
     private static final String BASE_URL = "http://localhost:8080";
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -21,9 +23,9 @@ public class SimpleApiRequest {
             HttpGet request = new HttpGet(url);
             request.setHeader("Accept", "application/json");
 
-            return client.execute(request, response ->
-                    response.getEntity() != null ? response.getEntity().getContent().toString() : ""
-            );
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(client.execute(request).getEntity().getContent()))) {
+                return reader.lines().reduce("", (acc, line) -> acc + line);
+            }
         }
     }
 
@@ -36,9 +38,9 @@ public class SimpleApiRequest {
             String json = objectMapper.writeValueAsString(data);
             request.setEntity(new StringEntity(json, ContentType.APPLICATION_JSON));
 
-            return client.execute(request, response ->
-                    response.getEntity() != null ? response.getEntity().getContent().toString() : ""
-            );
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(client.execute(request).getEntity().getContent()))) {
+                return reader.lines().reduce("", (acc, line) -> acc + line);
+            }
         }
     }
 }

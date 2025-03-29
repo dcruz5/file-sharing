@@ -1,7 +1,6 @@
 package gh.filesharing.client.classes;
 
 public class Usuario {
-
      //<editor-fold desc="Propietats">
 
     private String usuario;
@@ -19,10 +18,7 @@ public class Usuario {
         this.email = email;
         this.contrasena = contrasena;
     }
-    public Usuario() {
-
-    }
-
+    public Usuario() {}
 
     //</editor-fold>
 
@@ -65,7 +61,6 @@ public class Usuario {
                 ", contrasena='" + contrasena + '\'' +
                 '}';
     }
-
 
     //</editor-fold>
 }

@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 public class JwtUtil {
     private static final Logger log = LoggerFactory.getLogger(App.class);
-    private static final String SECRET_KEY = ConfigLoader.JWT_SECRET;
+    private static final String SECRET_KEY = "cXNn8SlN84eaTwyB16WbOsjGY4oF2f6x";
 
     public static String generateToken(String username) {
         long expirationTime = 60 * 60 * 1000; // 1 hour

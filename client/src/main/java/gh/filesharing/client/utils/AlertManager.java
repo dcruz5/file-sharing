@@ -19,7 +19,6 @@ public class AlertManager {
         JOptionPane.showMessageDialog(null, message, title, messageType);
     }
 
-    // Métodos específicos para tipos de alertas
     public static void showInfo(String message) {
         showAlert("Información", message, JOptionPane.INFORMATION_MESSAGE);
     }

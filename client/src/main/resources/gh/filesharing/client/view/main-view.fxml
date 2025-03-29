@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gh.filesharing.client.controllers.MainController">
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="15.0" style="-fx-background-color: #2c3e50;" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Sistema de Compartición de Archivos" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnProfile" mnemonicParsing="false" onAction="#handleProfileAction" text="Mi Perfil" />
+            <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#handleLogoutAction" text="Cerrar Sesión" />
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+      </HBox>
+   </top>
+   <center>
+      <TabPane tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Archivos Compartidos">
+            <content>
+              <VBox spacing="10.0">
+                 <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                 </padding>
+                 <children>
+                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                       <children>
+                          <Label text="Archivos que has compartido:">
+                             <font>
+                                <Font name="System Bold" size="14.0" />
+                             </font>
+                          </Label>
+                          <Region HBox.hgrow="ALWAYS" />
+                          <Button fx:id="btnNewUpload" mnemonicParsing="false" onAction="#handleNewUploadAction" text="Subir Nuevo Archivo" />
+                       </children>
+                    </HBox>
+                    <TableView fx:id="sharedFilesTable" VBox.vgrow="ALWAYS">
+                      <columns>
+                        <TableColumn fx:id="sharedNameColumn" prefWidth="200.0" text="Nombre" />
+                        <TableColumn fx:id="sharedSizeColumn" prefWidth="100.0" text="Tamaño" />
+                        <TableColumn fx:id="sharedDateColumn" prefWidth="150.0" text="Fecha" />
+                        <TableColumn fx:id="sharedCodeColumn" prefWidth="100.0" text="Código" />
+                        <TableColumn fx:id="sharedDownloadsColumn" prefWidth="100.0" text="Descargas" />
+                        <TableColumn fx:id="sharedActionsColumn" prefWidth="150.0" text="Acciones" />
+                      </columns>
+                    </TableView>
+                 </children>
+              </VBox>
+            </content>
+          </Tab>
+          <Tab text="Archivos Descargados">
+            <content>
+              <VBox spacing="10.0">
+                 <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                 </padding>
+                 <children>
+                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                       <children>
+                          <Label text="Archivos que has descargado:">
+                             <font>
+                                <Font name="System Bold" size="14.0" />
+                             </font>
+                          </Label>
+                          <Region HBox.hgrow="ALWAYS" />
+                          <Button fx:id="btnDownloadFile" mnemonicParsing="false" onAction="#handleDownloadFileAction" text="Descargar Archivo" />
+                       </children>
+                    </HBox>
+                    <TableView fx:id="downloadedFilesTable" VBox.vgrow="ALWAYS">
+                      <columns>
+                        <TableColumn fx:id="downloadedNameColumn" prefWidth="250.0" text="Nombre" />
+                        <TableColumn fx:id="downloadedSizeColumn" prefWidth="100.0" text="Tamaño" />
+                        <TableColumn fx:id="downloadedDateColumn" prefWidth="150.0" text="Fecha Descarga" />
+                        <TableColumn fx:id="downloadedOwnerColumn" prefWidth="150.0" text="Propietario" />
+                        <TableColumn fx:id="downloadedActionsColumn" prefWidth="150.0" text="Acciones" />
+                      </columns>
+                    </TableView>
+                 </children>
+              </VBox>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER_LEFT" prefHeight="30.0" spacing="10.0" style="-fx-background-color: #ecf0f1;" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="statusLabel" text="Conectado como: " />
+            <Label fx:id="usernameLabel" text="username" />
+         </children>
+         <padding>
+            <Insets left="10.0" right="10.0" />
+         </padding>
+      </HBox>
+   </bottom>
+</BorderPane>

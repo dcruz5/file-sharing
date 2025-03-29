@@ -11,20 +11,27 @@ import io.javalin.apibuilder.ApiBuilder;
 import io.javalin.community.ssl.SslPlugin;
 import io.javalin.community.ssl.TlsConfig;
 import io.javalin.plugin.bundled.CorsPluginConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.InputStream;
+import java.util.Map;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class App {
+    private static final Logger log = LoggerFactory.getLogger(App.class);
+
     public static void main(String[] args) {
-        String keystorePath = App.class.getClassLoader().getResource("server-keystore.jks").getPath();
+        InputStream keystoreInputStream = App.class.getClassLoader().getResourceAsStream("keystores/server-keystore.jks");
         String keystorePassword = "grupo8";
 
         SslPlugin sslPlugin = new SslPlugin(config ->{
-            config.keystoreFromPath(keystorePath, keystorePassword);
+            config.keystoreFromInputStream(keystoreInputStream, keystorePassword);
             config.http2 = true;
             config.securePort = 8443;
             config.insecurePort = 8080;
-            config.redirect = true;
+            // config.redirect = true;
             config.tlsConfig = TlsConfig.MODERN; // TLS configuration
             config.sniHostCheck = false;    // SNI hostname verification.
         });
@@ -39,6 +46,24 @@ public class App {
 
         }).start(8443);
 
+        app.before(ctx -> {
+            log.info("Incoming request: [{}] {}", ctx.method(), ctx.path());
+
+            if (!ctx.queryParamMap().isEmpty()) {
+                log.info("Query Params: {}", ctx.queryParamMap());
+            }
+            if (!ctx.formParamMap().isEmpty()) {
+                log.info("Form Params: {}", ctx.formParamMap());
+            }
+            for (Map.Entry<String, String> header : ctx.headerMap().entrySet()) {
+                log.info("Header: {} = {}", header.getKey(), header.getValue());
+            }
+            if (ctx.body().length() > 0) {
+                log.info("Request Body: {}", ctx.body());
+            }
+        });
+
+
         app.get("/health", ctx -> {
             if (DBConnection.isDBHealthy()) {
                 ctx.result("OK!");
@@ -51,17 +76,20 @@ public class App {
     }
 
     private static void routes() {
-        UserDAO userDAO = new UserDAO(); // Create the UserDAO instance
-        UserController userController = new UserController(userDAO); // Inject into UserController
+        // use Dependency Injection
+        UserDAO userDAO = new UserDAO();
+        UserController userController = new UserController(userDAO);
         FileDAO fileDAO = new FileDAO();
         FileController fileController = new FileController(fileDAO);
+        AuthController authController = new AuthController(userDAO);
 
         ApiBuilder.before("files/upload", AuthController::authenticate);
         ApiBuilder.before("/download", AuthController::authenticate);
         ApiBuilder.before("/users", AuthController::authenticate);
         ApiBuilder.before("/users/{userId}", AuthController::authenticate);
 
-        post("login", AuthController::login); // lookup user by username and check if the hashed password is correct
+        post("login", authController::login); // lookup user by username and check if the hashed password is correct
+        post("/register", authController::register); // already in userController
         post("/share", FileController::share);
         post("files/upload", FileController::upload);
         get("download", FileController::download);

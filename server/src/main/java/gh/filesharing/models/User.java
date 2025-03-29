@@ -17,6 +17,7 @@ public class User {
     @Column(name = "password", nullable = false)
     private String passwordHash;
     private String email;
+    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT FALSE")
     private boolean isAdmin;
     @Column(columnDefinition="TEXT")
     private String publicKey;
@@ -36,6 +37,13 @@ public class User {
         this.passwordHash = passwordHash;
         this.email = email;
         this.isAdmin = isAdmin;
+    }
+
+    public User(String username, String passwordHash, String email) {
+        this.username = username;
+        this.passwordHash = passwordHash;
+        this.email = email;
+        this.isAdmin = false;
     }
 
     public User() { }

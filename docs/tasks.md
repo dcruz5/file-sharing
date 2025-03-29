@@ -61,11 +61,9 @@
 
 #### Gestió de permisos i compartició de fitxers
 - [ ] Interfície per seleccionar qui pot accedir a cada fitxer.
-- [ ] Integració amb el servidor per validar permisos.
 
 #### Desxifrat de fitxers al client (E2EE)
 - [ ] Implementació del desxifrat `AES-256` després de la descàrrega.
-- [ ] Validació que només el destinatari pugui veure el fitxer.
 
 #### Proves finals
 - [ ] Fer proves unitàries.

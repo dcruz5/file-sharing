@@ -5,9 +5,9 @@
 
 ### Subtasques del Backend  
 #### Configuració del projecte i entorn
-- [ ] Configurar el repositori Git i estructura del projecte.
+- [x] Configurar el repositori Git i estructura del projecte.
 - [x] Preparar el sistema de compilació i execució (Gradle).
-- [ ] Configurar un servidor TLS amb `SSLServerSocket`.
+- [x] Configurar un servidor TLS.
 
 #### Implementació de la comunicació segura (TLS)
 - [x] Creació de certificats (`keystore` i `truststore`).
@@ -15,7 +15,7 @@
 - [ ] Proves de connexió segura amb un client bàsic.
 
 #### Gestió d’usuaris i autenticació
-- [ ] Registre i inici de sessió amb xifrat de contrasenyes (`SHA-256 + sal`).
+- [x] Registre i inici de sessió.
 - [ ] Validació de permisos per accedir a fitxers.
 - [x] Integració amb una base de dades MySQL per gestionar usuaris.
 
@@ -31,12 +31,13 @@
 
 #### Gestió de permisos i compartició de fitxers
 - [ ] Implementació d’un sistema de permisos.
-- [ ] Opcional: Sistema de grups d’usuaris.
 
 #### Proves i integració del backend
-- [ ] Desenvolupar proves unitàries i d’integració.
-- [ ] Verificar la comunicació client-servidor.
+- [x] Desenvolupar proves unitàries.
+- [ ] Desenvolupar proves d’integració
+- [x] Verificar la comunicació client-servidor.
 - [ ] Depuració d'errors i optimitzacions.
+- [ ] Fer proves amb diferents tipus d’arxius.
 
 ## 2. Desenvolupament del Client
 **Objectiu:** Crear un client amb una interfície gràfica per a la interacció amb l’usuari.
@@ -67,6 +68,10 @@
 - [ ] Validació que només el destinatari pugui veure el fitxer.
 
 #### Proves finals
-- [ ] Fer proves amb diferents tipus d’arxius.
-- [ ] Opcional: Millorar l'experiència d’usuari.
+- [ ] Fer proves unitàries.
+
+
+## Optional tasks (Server & Client)
+- [ ] Sistema de grups d’usuaris.
+- [ ] Millorar l'experiència d’usuari.
 

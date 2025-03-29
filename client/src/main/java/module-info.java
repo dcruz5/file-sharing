@@ -9,6 +9,8 @@ module gh.filesharing.client {
     requires bcrypt;
     requires com.google.gson;
     requires java.prefs;
+    requires java.net.http;
+    requires jdk.httpserver;
 
     exports gh.filesharing.client;
     exports gh.filesharing.client.controllers;

@@ -11,7 +11,7 @@ public class MainController {
 
     public void handleProfileAction(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/profile-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/main-view.fxml"));
             Parent profileView = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(profileView));
@@ -24,9 +24,9 @@ public class MainController {
 
     public void handleLogoutAction(ActionEvent actionEvent) {
         try {
-            // Perform logout logic here (e.g., clear session, tokens, etc.)
+            // TODO: clear token?
             AlertManager.showInfo("Sesión cerrada correctamente.");
-            // Redirect to login view
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login-view.fxml"));
             Parent loginView = loader.load();
             Stage stage = (Stage) ((javafx.scene.Node) actionEvent.getSource()).getScene().getWindow();

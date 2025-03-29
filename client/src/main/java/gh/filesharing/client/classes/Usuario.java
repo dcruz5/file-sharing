@@ -18,7 +18,12 @@ public class Usuario {
         this.email = email;
         this.contrasena = contrasena;
     }
-    public Usuario() {}
+    public Usuario() {
+
+    }
+
+    public Usuario(String username, String s) {
+    }
 
     //</editor-fold>
 

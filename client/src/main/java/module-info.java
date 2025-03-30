@@ -3,14 +3,12 @@ module gh.filesharing.client {
     requires javafx.fxml;
     requires com.formdev.flatlaf;
     requires java.desktop;
-    requires org.apache.httpcomponents.client5.httpclient5;
-    requires org.apache.httpcomponents.core5.httpcore5;
     requires com.fasterxml.jackson.databind;
-    requires bcrypt;
     requires com.google.gson;
     requires java.prefs;
     requires java.net.http;
     requires jdk.httpserver;
+    requires jjwt.api;
 
     exports gh.filesharing.client;
     exports gh.filesharing.client.controllers;

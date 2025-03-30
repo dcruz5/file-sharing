@@ -1,65 +1,47 @@
 package gh.filesharing.client.controllers;
 
+import gh.filesharing.client.MainApplication;
+import gh.filesharing.client.classes.CurrentSession;
+import gh.filesharing.client.utils.ViewManager;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import gh.filesharing.client.utils.AlertManager;
 
 public class MainController {
+    public Label usernameLabel;
+    private static final ViewManager viewManager = new ViewManager(MainApplication.getStage());
+
+    @FXML
+    public void initialize() {
+        CurrentSession session = CurrentSession.getInstance();
+        System.out.println("SESSION: " + session);
+
+        if (session == null || session.getUserId() == null) {
+            System.out.println("No se pudo obtener la sesión actual.");
+            return;
+        }
+
+        long userId = session.getUserId();
+//        fetchUserData(userId);
+    }
 
     public void handleProfileAction(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/main-view.fxml"));
-            Parent profileView = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(profileView));
-            stage.setTitle("Mi Perfil");
-            stage.show();
-        } catch (Exception e) {
-            AlertManager.showError("Error al abrir el perfil: " + e.getMessage());
-        }
+        viewManager.switchView("main-view.fxml", "Mi Perfil");
     }
 
     public void handleLogoutAction(ActionEvent actionEvent) {
-        try {
-            // TODO: clear token?
-            AlertManager.showInfo("Sesión cerrada correctamente.");
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login-view.fxml"));
-            Parent loginView = loader.load();
-            Stage stage = (Stage) ((javafx.scene.Node) actionEvent.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(loginView));
-            stage.show();
-        } catch (Exception e) {
-            AlertManager.showError("Error al cerrar sesión: " + e.getMessage());
-        }
+//        CurrentSession session = CurrentSession.getInstance();
+//        session.clearSession();
+        AlertManager.showInfo("Sesión cerrada correctamente.");
+        viewManager.switchView("login-register-view.fxml", "Login");
     }
 
     public void handleNewUploadAction(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/upload-view.fxml"));
-            Parent uploadView = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(uploadView));
-            stage.setTitle("Subir Nuevo Archivo");
-            stage.show();
-        } catch (Exception e) {
-            AlertManager.showError("Error al abrir la ventana de subida: " + e.getMessage());
-        }
+        viewManager.switchView("upload-view.fxml", "Subir Nuevo Archivo");
     }
 
     public void handleDownloadFileAction(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/download-view.fxml"));
-            Parent downloadView = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(downloadView));
-            stage.setTitle("Descargar Archivo");
-            stage.show();
-        } catch (Exception e) {
-            AlertManager.showError("Error al abrir la ventana de descarga: " + e.getMessage());
-        }
+        viewManager.switchView("download-view.fxml", "Descargar Archivo");
     }
 }

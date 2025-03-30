@@ -14,8 +14,8 @@ public class User {
     private int id;
     @Column(nullable = false, unique = true)
     private String username;
-    @Column(name = "password", nullable = false)
-    private String passwordHash;
+    @Column(nullable = false)
+    private String password;
     private String email;
     @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT FALSE")
     private boolean isAdmin;
@@ -24,24 +24,24 @@ public class User {
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FileMetadata> files;
 
-    public User(int id, String username, String passwordHash, String email, boolean isAdmin) {
+    public User(int id, String username, String password, String email, boolean isAdmin) {
         this.id = id;
         this.username = username;
-        this.passwordHash = passwordHash;
+        this.password = password;
         this.email = email;
         this.isAdmin = isAdmin;
     }
 
-    public User(String username, String passwordHash, String email, boolean isAdmin) {
+    public User(String username, String password, String email, boolean isAdmin) {
         this.username = username;
-        this.passwordHash = passwordHash;
+        this.password = password;
         this.email = email;
         this.isAdmin = isAdmin;
     }
 
-    public User(String username, String passwordHash, String email) {
+    public User(String username, String password, String email) {
         this.username = username;
-        this.passwordHash = passwordHash;
+        this.password = password;
         this.email = email;
         this.isAdmin = false;
     }
@@ -64,12 +64,12 @@ public class User {
         this.username = username;
     }
 
-    public String getPasswordHash() {
-        return passwordHash;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {

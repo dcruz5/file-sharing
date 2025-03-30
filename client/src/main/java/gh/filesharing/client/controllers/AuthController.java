@@ -1,28 +1,23 @@
 package gh.filesharing.client.controllers;
 
-import at.favre.lib.crypto.bcrypt.BCrypt;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import gh.filesharing.client.utils.AlertManager;
-import gh.filesharing.client.utils.JwtStore;
+import gh.filesharing.client.MainApplication;
+import gh.filesharing.client.classes.CurrentSession;
+import gh.filesharing.client.utils.*;
 import gh.filesharing.client.classes.ApiRequest;
-import gh.filesharing.client.classes.Usuario;
+import io.jsonwebtoken.Claims;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.util.*;
-
-import gh.filesharing.client.utils.VistaUtil;
 
 public class AuthController {
 
@@ -42,8 +37,12 @@ public class AuthController {
     public Label statusLabel;
     @FXML
     public Button loginButton;
+    ViewManager viewManager = new ViewManager(MainApplication.getStage());
 
-    private final List<Usuario> listaUsuarios = new ArrayList<>();
+    @FXML
+    public void initialize() {
+        viewManager = new ViewManager(MainApplication.getStage());
+    }
 
     public void registrarUsuario(ActionEvent actionEvent) {
         String username = registerUsernameField.getText();
@@ -71,8 +70,6 @@ public class AuthController {
             return;
         }
 
-        String hashedPassword = BCrypt.withDefaults().hashToString(12, password.toCharArray());
-
         try {
             // TODO: should open file manager to select the path to save the private key
             KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
@@ -89,14 +86,11 @@ public class AuthController {
             Map<String, String> params = new HashMap<>();
             params.put("username", username);
             params.put("email", email);
-            params.put("passwordHash", hashedPassword);
+            params.put("password", password);
             params.put("publicKey", publicKeyString);
 
             String response = ApiRequest.post("/register", params);
             AlertManager.showInfo("Usuario registrado correctamente: " + response);
-
-            Usuario usuario = new Usuario(username, email, hashedPassword);
-            listaUsuarios.add(usuario);
 
             registerUsernameField.clear();
             registerEmailField.clear();
@@ -145,30 +139,24 @@ public class AuthController {
 
                 JwtStore.saveToken(token);
 
+                Claims claims = JwtUtil.decodeToken(token);
+                if (claims != null) {
+                    Long userId = claims.get("userId", Long.class);
+                    String userName = (String) claims.get("sub");
+                    CurrentSession currentSession = CurrentSession.getInstance();
+                    currentSession.setUsername(userName);
+                    currentSession.setUserId(userId);
+                }
+
                 loginUsernameField.clear();
                 loginPasswordField.clear();
 
-                cambiarVentana();
+                viewManager.switchView("main-view.fxml", "File Sharing App");
             } else {
                 AlertManager.showError("Inicio de sesión fallido: " + response);
             }
         } catch (Exception e) {
             AlertManager.showError("Error al iniciar sesión: " + e.getMessage());
-        }
-    }
-
-    private void cambiarVentana()  {
-        try {
-            Stage currentStage = (Stage) loginButton.getScene().getWindow();
-            boolean vistaExitosa = VistaUtil.cambiarVista("/gh/filesharing/client/view/main-view.fxml", "File Sharing App");
-            if (!vistaExitosa) {
-                AlertManager.showError("Error al cambiar de vista");
-                return;
-            }
-            VistaUtil.cerrarVentana(currentStage);
-        } catch (Exception e) {
-            e.printStackTrace();
-            AlertManager.showError("Error al cambiar de vista: " + e.getMessage());
         }
     }
 

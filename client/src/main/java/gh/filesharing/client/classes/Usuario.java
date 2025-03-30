@@ -5,24 +5,18 @@ public class Usuario {
 
     private String usuario;
     private String email;
-    private String contrasena;
-
 
     //</editor-fold>
 
 
     //<editor-fold desc="Constructors">
 
-    public Usuario(String usuario, String email, String contrasena) {
+    public Usuario(String usuario, String email) {
         this.usuario = usuario;
         this.email = email;
-        this.contrasena = contrasena;
     }
     public Usuario() {
 
-    }
-
-    public Usuario(String username, String s) {
     }
 
     //</editor-fold>
@@ -45,15 +39,6 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
-
     //</editor-fold>
 
 
@@ -63,7 +48,6 @@ public class Usuario {
         return "Usuario{" +
                 "usuario='" + usuario + '\'' +
                 ", email='" + email + '\'' +
-                ", contrasena='" + contrasena + '\'' +
                 '}';
     }
 

@@ -34,6 +34,7 @@ public class AuthController {
                 return;
             }
 
+            // TODO: method should return boolean ?
             String token = AuthManager.validateCredentials(username, password);
             if (token != null) {
                 ctx.status(200).json(Map.of("token", token));
@@ -51,10 +52,13 @@ public class AuthController {
     public void register(Context ctx) {
         User user = ctx.bodyAsClass(User.class);
 
-        if (user.getUsername() == null || user.getPasswordHash() == null || user.getEmail() == null) {
+        if (user.getUsername() == null || user.getPassword() == null || user.getEmail() == null) {
             ctx.status(400).json("Missing username, password, or email");
             return;
         }
+
+        String hashedPassword = BCrypt.withDefaults().hashToString(10, user.getPassword().toCharArray());
+        user.setPassword(hashedPassword);
 
         log.info("Received user registration: " + user.getUsername());
 

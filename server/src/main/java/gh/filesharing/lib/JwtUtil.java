@@ -9,7 +9,7 @@ import gh.filesharing.App;
 
 import java.util.Date;
 
-import gh.filesharing.config.ConfigLoader;
+import gh.filesharing.models.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,10 +17,11 @@ public class JwtUtil {
     private static final Logger log = LoggerFactory.getLogger(App.class);
     private static final String SECRET_KEY = "cXNn8SlN84eaTwyB16WbOsjGY4oF2f6x";
 
-    public static String generateToken(String username) {
+    public static String generateToken(User user) {
         long expirationTime = 60 * 60 * 1000; // 1 hour
         return JWT.create()
-                .withSubject(username)
+                .withSubject(user.getUsername())
+                .withClaim("userId", user.getId())
                 .withExpiresAt(new Date(System.currentTimeMillis() + expirationTime))
                 .sign(Algorithm.HMAC512(SECRET_KEY));
     }

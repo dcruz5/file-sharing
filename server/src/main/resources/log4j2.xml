@@ -16,14 +16,6 @@
                 <SizeBasedTriggeringPolicy size="10MB" />
             </Policies>
         </RollingFile>
-
-        <!-- JSON Logger (Optional, useful for structured logs) -->
-        <RollingFile name="JsonLogger" fileName="logs/app.json" filePattern="logs/app-%d{yyyy-MM-dd}.json.gz">
-            <JsonLayout complete="true" />
-            <Policies>
-                <TimeBasedTriggeringPolicy />
-            </Policies>
-        </RollingFile>
     </Appenders>
 
     <Loggers>
